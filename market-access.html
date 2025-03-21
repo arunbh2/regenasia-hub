@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Access - RegenAsia Hub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .market-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-quick);
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .tab-button:hover:not(.active) {
+            background-color: var(--medium-gray);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .certification-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .cert-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .cert-logo {
+            max-width: 200px;
+            max-height: 80px;
+            margin: 0 auto 1rem;
+        }
+        
+        .cert-content {
+            padding: 1.5rem;
+        }
+        
+        .cert-features {
+            margin: 1rem 0;
+        }
+        
+        .cert-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cert-feature i {
+            color: var(--primary-green);
+            margin-right: 0.5rem;
+            margin-top: 0.3rem;
+        }
+        
+        .cert-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .buyer-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .buyer-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .buyer-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 1rem;
+        }
+        
+        .buyer-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .buyer-location {
+            color: #777;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .buyer-location i {
+            margin-right: 0.5rem;
+        }
+        
+        .buyer-interests {
+            margin: 1rem 0;
+        }
+        
+        .interest-tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .buyer-actions {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .premium-example {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-md);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .premium-chart {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .pricing-table th {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .premium-amount {
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+        
+        .resource-links {
+            margin-top: 2rem;
+        }
+        
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform var(--transition-quick);
+        }
+        
+        .resource-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        .resource-link i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-right: 1rem;
+        }
+        
+        .link-content h4 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .link-content p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .success-stories {
+            margin-top: 3rem;
+        }
+        
+        .story-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .story-content {
+            padding: 1.5rem;
+        }
+        
+        .story-meta {
+            display: flex;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .story-meta > div {
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-meta i {
+            margin-right: 0.5rem;
+        }
+        
+        .story-results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .result-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 0.25rem;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body class="market-access-page">
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="RegenAsia Hub Logo">
+                    <span>RegenAsia Hub</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="knowledge.html">Knowledge</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="tools-training.html">Tools & Training</a></li>
+                    <li><a href="fundraising.html">Fundraising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Market Access</h1>
+            <p>Connect regenerative produce with buyers and markets</p>
+        </div>
+    </section>
+
+    <!-- Market Access Introduction -->
+    <section class="market-intro-section">
+        <div class="container">
+            <div class="market-intro">
+                <h2>Connecting Regenerative Products to Markets</h2>
+                <p>Transitioning to regenerative agriculture methods not only benefits the environment and builds climate resilience, but can also open new market opportunities. This resource hub helps farmers and producer organizations understand certification options, connect with buyers interested in regenerative products, and explore premium pricing potential.</p>
+            </div>
+            
+            <div class="tab-navigation">
+                <button class="tab-button active" data-tab="certification">Certification Guides</button>
+                <button class="tab-button" data-tab="buyers">Buyer Directory</button>
+                <button class="tab-button" data-tab="premiums">Price Premiums</button>
+                <button class="tab-button" data-tab="resources">Additional Resources</button>
+            </div>
+            
+            <!-- Certification Guides Tab -->
+            <div class="tab-content active" id="certification">
+                <h2>Certification Options for Regenerative Products</h2>
+                <p>Certification can provide validation of your regenerative practices and help differentiate your products in the marketplace. Below are certification programs relevant to regenerative agriculture in South and Southeast Asia, with guidance on requirements, costs, and benefits.</p>
+                
+                <div class="certification-grid">
+                    <!-- Organic Certification -->
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <img src="assets/images/organic-logo.png" alt="Organic Certification" class="cert-logo">
+                            <h3>Organic Certification</h3>
+                        </div>
+                        <div class="cert-content">
+                            <p>Certifies that products are grown without synthetic fertilizers, pesticides, or GMOs, using methods that promote soil health and ecological balance.</p>
+                            <div class="cert-features">
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Available through multiple certification bodies across Asia</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Strong market recognition and consumer demand</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Established premium pricing in many markets</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Participatory Guarantee Systems (PGS) available as lower-cost options</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <a href="#" class="view-button">Certification Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rainforest Alliance Certification -->
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <img src="assets/images/rainforest-alliance-logo.png" alt="Rainforest Alliance Certification" class="cert-logo">
+                            <h3>Rainforest Alliance</h3>
+                        </div>
+                        <div class="cert-content">
+                            <p>Focuses on sustainable farm management with environmental, social, and economic criteria, including biodiversity conservation and climate resilience.</p>
+                            <div class="cert-features">
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Particularly relevant for coffee, tea, cocoa, and tropical fruits</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Growing recognition in international markets</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Support available for smallholder group certification</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Training modules and resources provided</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <a href="#" class="view-button">Certification Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fair Trade Certification -->
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <img src="assets/images/fair-trade-logo.png" alt="Fair Trade Certification" class="cert-logo">
+                            <h3>Fair Trade</h3>
+                        </div>
+                        <div class="cert-content">
+                            <p>Ensures farmers receive fair prices, work in good conditions, and invest in community development and sustainable farming practices.</p>
+                            <div class="cert-features">
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Guaranteed minimum prices and social premiums</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Strong focus on cooperative/group certification</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Well-established for coffee, tea, spices, and other exports</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Support for climate adaptation included in standards</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <a href="#" class="view-button">Certification Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="mt-4">Participatory Guarantee Systems (PGS)</h3>
+                <p>For smallholder farmers, Participatory Guarantee Systems offer a more accessible, community-based alternative to third-party certification. These locally-focused quality assurance systems certify producers based on active participation of stakeholders and operate on a foundation of trust, social networks, and knowledge exchange.</p>
+                
+                <div class="resource-links">
+                    <div class="resource-link">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="link-content">
+                            <h4>PGS Implementation Guide</h4>
+                            <p>Step-by-step guidance for establishing a PGS system in your community</p>
+                        </div>
+                    </div>
+                    <div class="resource-link">
+                        <i class="fas fa-landmark"></i>
+                        <div class="link-content">
+                            <h4>Regional PGS Networks</h4>
+                            <p>Directory of established PGS networks across South and Southeast Asia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Buyer Directory Tab -->
+            <div class="tab-content" id="buyers">
+                <h2>Buyer Directory</h2>
+                <p>Connect with buyers seeking regeneratively grown products from South and Southeast Asia. This directory includes companies committed to supporting sustainable agriculture through their sourcing practices.</p>
+                
+                <div class="certification-grid">
+                    <!-- Buyer 1 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-1.png" alt="Green Harvest Company" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Green Harvest Company</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> Singapore, Thailand, Philippines</p>
+                            </div>
+                        </div>
+                        <p>International food company seeking regeneratively grown rice, coconut products, and tropical fruits for export markets.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Organic Certified</span>
+                            <span class="interest-tag">Rice</span>
+                            <span class="interest-tag">Coconut</span>
+                            <span class="interest-tag">Tropical Fruits</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Buyer 2 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-2.png" alt="Earth Bean Coffee" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Earth Bean Coffee</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> Vietnam, Indonesia, India</p>
+                            </div>
+                        </div>
+                        <p>Specialty coffee roaster and retailer committed to sourcing shade-grown, sustainably produced coffee from smallholder farms across Asia.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Coffee</span>
+                            <span class="interest-tag">Rainforest Alliance</span>
+                            <span class="interest-tag">Agroforestry</span>
+                            <span class="interest-tag">Fair Trade</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Buyer 3 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-3.png" alt="Pure Spice Trading" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Pure Spice Trading</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> India, Sri Lanka, Nepal</p>
+                            </div>
+                        </div>
+                        <p>Spice trader working with regenerative farming communities to source premium organic spices for international markets.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Spices</span>
+                            <span class="interest-tag">Organic</span>
+                            <span class="interest-tag">Fair Trade</span>
+                            <span class="interest-tag">Forest Gardens</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Buyer 4 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-4.png" alt="Local Food Network" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Local Food Network</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> Thailand, Philippines, Malaysia</p>
+                            </div>
+                        </div>
+                        <p>Regional cooperative connecting regenerative farmers with urban consumers through community-supported agriculture and farm-to-table programs.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Mixed Vegetables</span>
+                            <span class="interest-tag">PGS Certified</span>
+                            <span class="interest-tag">Direct Trade</span>
+                            <span class="interest-tag">Local Markets</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="view-more">
+                    <a href="#" class="secondary-button">View All Buyers</a>
+                </div>
+                
+                <div class="success-stories">
+                    <h3>Successful Market Connections</h3>
+                    
+                    <div class="story-card">
+                        <div class="story-content">
+                            <h4>Rainforest Alliance Coffee Premium in Vietnam</h4>
+                            <div class="story-meta">
+                                <div><i class="fas fa-map-marker-alt"></i> Central Highlands, Vietnam</div>
+                                <div><i class="fas fa-seedling"></i> Coffee Agroforestry</div>
+                            </div>
+                            <p>Vietnamese coffee farmer Trinh Vinh became one of the first Rainforest Alliance-certified growers in his region, implementing agroforestry practices with shade trees and cover crops. His regenerative approach not only improved soil health but opened access to specialty coffee markets.</p>
+                            <div class="story-results">
+                                <div class="result-item">
+                                    <div class="result-value">25%</div>
+                                    <div class="result-label">Cost Reduction</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-value">35%</div>
+                                    <div class="result-label">Profit Increase</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-value">15%</div>
+                                    <div class="result-label">Price Premium</div>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Price Premiums Tab -->
+            <div class="tab-content" id="premiums">
+                <h2>Price Premiums for Regenerative Products</h2>
+                <p>Regenerative agriculture practices can lead to price premiums in the market due to improved product quality, certification credentials, and growing consumer demand for sustainable products. This section provides data on potential premiums across different crops and markets.</p>
+                
+                <div class="premium-example">
+                    <h3>Average Premium by Certification Type</h3>
+                    <p>Based on market data collected across South and Southeast Asia, the following chart shows average price premiums farmers can expect for certified regenerative products compared to conventional alternatives.</p>
+                    
+                    <div class="premium-chart">
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Certification Type</th>
+                                    <th>Crop Categories</th>
+                                    <th>Average Premium</th>
+                                    <th>Market Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Organic</td>
+                                    <td>Rice, Vegetables, Fruits</td>
+                                    <td class="premium-amount">20-30%</td>
+                                    <td>Higher in export and urban markets</td>
+                                </tr>
+                                <tr>
+                                    <td>Rainforest Alliance</td>
+                                    <td>Coffee, Tea, Cocoa</td>
+                                    <td class="premium-amount">15-25%</td>
+                                    <td>Strong demand in specialty markets</td>
+                                </tr>
+                                <tr>
+                                    <td>Fair Trade</td>
+                                    <td>Coffee, Spices, Handicrafts</td>
+                                    <td class="premium-amount">10-20%</td>
+                                    <td>Plus social premium for community projects</td>
+                                </tr>
+                                <tr>
+                                    <td>PGS (Participatory Guarantee)</td>
+                                    <td>Mixed Vegetables, Local Crops</td>
+                                    <td class="premium-amount">10-15%</td>
+                                    <td>Growing recognition in local markets</td>
+                                </tr>
+                                <tr>
+                                    <td>Direct Trade Relationships</td>
+                                    <td>Various</td>
+                                    <td class="premium-amount">25-40%</td>
+                                    <td>Based on quality and story-based marketing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <h3 class="mt-4">Factors Affecting Price Premiums</h3>
+                <p>Several factors influence the premium you may receive for regeneratively grown products:</p>
+                
+                <div class="certification-grid">
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-award" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Product Quality</h3>
+                        </div>
+                        <p>Regenerative practices often result in improved taste, nutritional value, and shelf life, which can command higher prices regardless of certification status.</p>
+                    </div>
+                    
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-certificate" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Certification Type</h3>
+                        </div>
+                        <p>Different certifications carry different levels of recognition and value in various markets. Multiple certifications can sometimes compound premiums.</p>
+                    </div>
+                    
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-globe" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Market Access</h3>
+                        </div>
+                        <p>Direct access to consumers or specialty buyers typically yields higher premiums than selling through conventional supply chains or intermediaries.</p>
+                    </div>
+                    
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-microphone" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Story & Transparency</h3>
+                        </div>
+                        <p>Products with compelling stories about regenerative practices, farmer welfare, and environmental impact often command higher prices from conscious consumers.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Resources Tab -->
+            <div class="tab-content" id="resources">
+                <h2>Additional Market Access Resources</h2>
+                <p>Explore these additional tools and resources to help you navigate markets for regeneratively grown products.</p>
+                
+                <div class="resource-links">
+                    <div class="resource-link">
+                        <i class="fas fa-calculator"></i>
+                        <div class="link-content">
+                            <h4>Certification Cost Calculator</h4>
+                            <p>Estimate certification costs for different schemes based on your farm size and crop type</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-file-contract"></i>
+                        <div class="link-content">
+                            <h4>Sample Contracts & Agreements</h4>
+                            <p>Templates for farmer-buyer agreements with fair terms for regenerative products</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-users"></i>
+                        <div class="link-content">
+                            <h4>Farmer Group Formation Guide</h4>
+                            <p>Step-by-step guidance for forming producer groups to access markets collectively</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-box"></i>
+                        <div class="link-content">
+                            <h4>Post-Harvest Handling Guidelines</h4>
+                            <p>Best practices for maintaining quality and value of regenerative products</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="link-content">
+                            <h4>Digital Market Platforms</h4>
+                            <p>Directory of apps and online platforms connecting farmers to markets</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-comments"></i>
+                        <div class="link-content">
+                            <h4>Market Access Discussion Forum</h4>
+                            <p>Join our community discussion on market challenges and opportunities</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-stories">
+                    <h3>Market Innovation Stories</h3>
+                    
+                    <div class="story-card">
+                        <div class="story-content">
+                            <h4>Farmer Producer Organization in Andhra Pradesh</h4>
+                            <div class="story-meta">
+                                <div><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</div>
+                                <div><i class="fas fa-seedling"></i> Natural Farming</div>
+                            </div>
+                            <p>In India's Andhra Pradesh, Farmer Producer Organizations formed by natural farming groups have created direct market linkages to health-conscious urban consumers. By collectively processing, packaging, and marketing their chemical-free products, these farmers have significantly increased their income while building a trusted brand for naturally grown food.</p>
+                            <a href="#" class="read-more">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Help Accessing Markets?</h2>
+            <p>Connect with our network of market access specialists for personalized guidance</p>
+            <a href="community.html" class="cta-button">Contact a Market Specialist</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>RegenAsia Hub</h3>
+                    <p>A central platform for regenerative agriculture knowledge, community, tools, and fundraising in South and Southeast Asia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="knowledge.html">Knowledge</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="tools-training.html">Tools & Training</a></li>
+                        <li><a href="fundraising.html">Fundraising</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="ecosystem.html">Ecosystem</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenAsia Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
