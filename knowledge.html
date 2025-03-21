@@ -1,1 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Repository - RegenAsia Hub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="knowledge-page">
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="RegenAsia Hub Logo">
+                    <span>RegenAsia Hub</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li class="active"><a href="knowledge.html">Knowledge</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="tools-training.html">Tools & Training</a></li>
+                    <li><a href="fundraising.html">Fundraising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Knowledge Repository</h1>
+            <p>Curated resources, research, and case studies on regenerative agriculture across South and Southeast Asia</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter Bar -->
+    <section class="search-filter">
+        <div class="container">
+            <div class="search-box">
+                <input type="text" placeholder="Search for resources...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label for="resource-type">Resource Type:</label>
+                    <select id="resource-type">
+                        <option value="all">All Types</option>
+                        <option value="case-studies">Case Studies</option>
+                        <option value="research">Research Articles</option>
+                        <option value="best-practices">Best Practices</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="region">Region:</label>
+                    <select id="region">
+                        <option value="all">All Regions</option>
+                        <option value="india">India</option>
+                        <option value="indonesia">Indonesia</option>
+                        <option value="nepal">Nepal</option>
+                        <option value="philippines">Philippines</option>
+                        <option value="sri-lanka">Sri Lanka</option>
+                        <option value="thailand">Thailand</option>
+                        <option value="vietnam">Vietnam</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="topic">Topic:</label>
+                    <select id="topic">
+                        <option value="all">All Topics</option>
+                        <option value="soil-health">Soil Health</option>
+                        <option value="agroforestry">Agroforestry</option>
+                        <option value="water-management">Water Management</option>
+                        <option value="biodiversity">Biodiversity</option>
+                        <option value="community">Community Approaches</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="knowledge-section case-studies" id="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Case Studies</h2>
+                <p>Success stories of regenerative agriculture implementation across different contexts</p>
+            </div>
+            <div class="resource-cards">
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <img src="assets/images/case-study-1.jpg" alt="Andhra Pradesh Natural Farming">
+                    </div>
+                    <div class="resource-content">
+                        <h3>Community Natural Farming in Andhra Pradesh</h3>
+                        <p class="resource-meta"><span>India</span> | <span>Soil Health</span> | <span>Community Approach</span></p>
+                        <p class="resource-excerpt">How a state-wide program transitioned millions of farmers to natural, regenerative farming practices through community networks and government support.</p>
+                        <a href="#" class="view-button">View Case Study</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <img src="assets/images/case-study-2.jpg" alt="Coffee Agroforestry in the Philippines">
+                    </div>
+                    <div class="resource-content">
+                        <h3>Farmer-Managed Agroforestry in the Philippines</h3>
+                        <p class="resource-meta"><span>Philippines</span> | <span>Agroforestry</span> | <span>Export Crops</span></p>
+                        <p class="resource-excerpt">Smallholder coffee growers transformed degraded lands using regenerative agroforestry, improving soil health while diversifying income.</p>
+                        <a href="#" class="view-button">View Case Study</a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-img">
+                        <img src="assets/images/case-study-3.jpg" alt="Sri Lankan Home Gardens">
+                    </div>
+                    <div class="resource-content">
+                        <h3>Traditional Home Gardens in Sri Lanka</h3>
+                        <p class="resource-meta"><span>Sri Lanka</span> | <span>Biodiversity</span> | <span>Traditional Knowledge</span></p>
+                        <p class="resource-excerpt">Centuries-old Kandyan home gardens offer a proven model of regenerative agriculture rooted in indigenous knowledge and biodiversity.</p>
+                        <a href="#" class="view-button">View Case Study</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="secondary-button">View More Case Studies</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Articles Section -->
+    <section class="knowledge-section research-articles">
+        <div class="container">
+            <div class="section-header">
+                <h2>Research Articles</h2>
+                <p>Scientific papers and reports on regenerative agriculture principles and outcomes</p>
+            </div>
+            <div class="resource-list">
+                <div class="resource-item">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Soil Carbon Sequestration Potential in South Asian Agricultural Systems</h3>
+                        <p class="resource-meta"><span>Journal of Climate Resilience</span> | <span>2023</span> | <span>PDF</span></p>
+                        <p class="resource-excerpt">Research on the carbon sequestration potential of regenerative practices in different agro-ecological zones.</p>
+                    </div>
+                    <div class="resource-action">
+                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Economic Analysis of Regenerative vs. Conventional Farming in Southeast Asia</h3>
+                        <p class="resource-meta"><span>Agricultural Economics</span> | <span>2022</span> | <span>PDF</span></p>
+                        <p class="resource-excerpt">Comparative study of economic outcomes for farmers transitioning to regenerative methods.</p>
+                    </div>
+                    <div class="resource-action">
+                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+                
+                <div class="resource-item">
+                    <div class="resource-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Water Conservation Effects of Cover Crops in Monsoon Regions</h3>
+                        <p class="resource-meta"><span>Journal of Water Management</span> | <span>2024</span> | <span>PDF</span></p>
+                        <p class="resource-excerpt">Research on how cover crops affect water infiltration and retention in monsoon climates.</p>
+                    </div>
+                    <div class="resource-action">
+                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="secondary-button">View More Research Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Section -->
+    <section class="knowledge-section best-practices">
+        <div class="container">
+            <div class="section-header">
+                <h2>Best Practices & Stories</h2>
+                <p>Practical techniques and inspiring stories from farmers implementing regenerative agriculture</p>
+            </div>
+            <div class="practices-grid">
+                <div class="practice-card">
+                    <h3>Reviving and Sustaining Healthy Soils</h3>
+                    <p>Best practices for soil regeneration include cover cropping, conservation tillage, organic amendments, and crop rotation.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="practice-card">
+                    <h3>Agroforestry and Biodiversity Restoration</h3>
+                    <p>Integrate trees and diverse vegetation into farming systems with multi-strata agroforestry, boundary planting, and habitat creation.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="practice-card">
+                    <h3>Water Management for Resilience</h3>
+                    <p>Techniques for rainwater harvesting, efficient irrigation, soil moisture conservation, and integrated watershed management.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="practice-card">
+                    <h3>Integrated and Community-Centered Farming</h3>
+                    <p>Holistic approaches combining crops, livestock, trees, and aquaculture with community resource management.</p>
+                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Resources -->
+    <section class="related-resources">
+        <div class="container">
+            <h2>Looking for More?</h2>
+            <div class="resource-buttons">
+                <a href="tools-training.html" class="resource-button">
+                    <i class="fas fa-tools"></i>
+                    <span>Practical Toolkits</span>
+                </a>
+                <a href="community.html" class="resource-button">
+                    <i class="fas fa-users"></i>
+                    <span>Join the Community</span>
+                </a>
+                <a href="fundraising.html" class="resource-button">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <span>Support Projects</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>RegenAsia Hub</h3>
+                    <p>A central platform for regenerative agriculture knowledge, community, tools, and fundraising in South and Southeast Asia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="knowledge.html">Knowledge</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="tools-training.html">Tools & Training</a></li>
+                        <li><a href="fundraising.html">Fundraising</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenAsia Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
