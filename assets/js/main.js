@@ -4,53 +4,64 @@
  */
 
 // Wait until the DOM is fully loaded before running scripts
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
-    initMobileMenu();
-    initStickyHeader();
-    initFormValidation();
-    initProjectFilters();
-    initCarousels();
-    initSearchFilters();
-});
-
-/**
- * Mobile Menu Toggle
- * Handles the responsive menu for mobile devices
- */
-function initMobileMenu() {
+    // Scroll Header Effect
+    const header = document.querySelector('.main-header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+    
+    // Mobile Menu Toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const mainNav = document.querySelector('.main-nav');
     
-    if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
-            
-            // Toggle icon between bars and times
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
+    menuToggle.addEventListener('click', function() {
+        menuToggle.classList.toggle('active');
+        mainNav.classList.toggle('active');
+    });
+    
+    // Mobile Dropdown Toggle
+    const menuItems = document.querySelectorAll('.menu-item.has-dropdown');
+    menuItems.forEach(item => {
+        const link = item.querySelector('.menu-link');
         
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.mobile-menu-toggle') && 
-                !event.target.closest('.main-nav') && 
-                mainNav.classList.contains('active')) {
-                
-                mainNav.classList.remove('active');
-                const icon = menuToggle.querySelector('i');
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
+        // For mobile view
+        if (window.innerWidth < 992) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                item.classList.toggle('active');
+            });
+        }
+    });
+    
+    // Keyboard Navigation Improvements
+    const dropdownItems = document.querySelectorAll('.dropdown-menu a');
+    
+    dropdownItems.forEach(item => {
+        item.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                item.closest('.menu-item').querySelector('.menu-link').focus();
             }
         });
-    }
-}
+    });
+    
+    // Resize Handler
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 992) {
+            mainNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+        }
+    });
+});
+</script>
 
 /**
  * Sticky Header
