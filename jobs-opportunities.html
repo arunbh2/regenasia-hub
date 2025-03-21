@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobs & Opportunities - RegenAsia Hub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .jobs-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+        
+        .filter-bar {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .filter-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        
+        .job-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-button {
+            padding: 0.5rem 1rem;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-quick);
+        }
+        
+        .category-button.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .job-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform var(--transition-standard);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .job-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            background-color: var(--light-gray);
+        }
+        
+        .job-type-tag {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .job-type-tag.consulting {
+            background-color: #e1f5fe;
+            color: #0277bd;
+        }
+        
+        .job-type-tag.full-time {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        
+        .job-type-tag.project {
+            background-color: #fff8e1;
+            color: #ff8f00;
+        }
+        
+        .job-type-tag.research {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+        
+        .job-title {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .job-organization {
+            display: flex;
+            align-items: center;
+            color: #555;
+        }
+        
+        .job-org-logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .job-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .job-details {
+            margin-bottom: 1.5rem;
+        }
+        
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .job-meta-item i {
+            margin-right: 0.5rem;
+        }
+        
+        .job-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+        }
+        
+        .job-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .featured-section {
+            margin-top: 4rem;
+        }
+        
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .post-cta {
+            background-color: var(--primary-yellow);
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .post-cta h2,
+        .post-cta p {
+            color: white;
+        }
+        
+        .post-cta p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .post-cta .cta-button {
+            background-color: white;
+            color: var(--primary-yellow);
+        }
+        
+        .post-cta .cta-button:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .tips-section {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tip-icon {
+            font-size: 2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .tip-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body class="jobs-page">
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="RegenAsia Hub Logo">
+                    <span>RegenAsia Hub</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="knowledge.html">Knowledge</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="tools-training.html">Tools & Training</a></li>
+                    <li><a href="fundraising.html">Fundraising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Jobs & Opportunities</h1>
+            <p>Find or post regenerative agriculture positions and projects</p>
+        </div>
+    </section>
+
+    <!-- Jobs Introduction -->
+    <section class="jobs-intro-section">
+        <div class="container">
+            <div class="jobs-intro">
+                <h2>Connect with Opportunities in Regenerative Agriculture</h2>
+                <p>Our Jobs & Opportunities Board connects skilled professionals with organizations seeking expertise in regenerative agriculture, agroecology, climate resilience, and sustainable food systems across South and Southeast Asia.</p>
+            </div>
+            
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="opportunity-type">Opportunity Type</label>
+                        <select id="opportunity-type">
+                            <option value="all">All Types</option>
+                            <option value="consulting">Consulting</option>
+                            <option value="full-time">Full-Time</option>
+                            <option value="project">Project-Based</option>
+                            <option value="research">Research</option>
+                            <option value="volunteer">Volunteer</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="location">Location</label>
+                        <select id="location">
+                            <option value="all">All Locations</option>
+                            <option value="bangladesh">Bangladesh</option>
+                            <option value="india">India</option>
+                            <option value="indonesia">Indonesia</option>
+                            <option value="nepal">Nepal</option>
+                            <option value="philippines">Philippines</option>
+                            <option value="sri-lanka">Sri Lanka</option>
+                            <option value="thailand">Thailand</option>
+                            <option value="vietnam">Vietnam</option>
+                            <option value="remote">Remote</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="expertise">Expertise</label>
+                        <select id="expertise">
+                            <option value="all">All Areas</option>
+                            <option value="soil-health">Soil Health</option>
+                            <option value="agroforestry">Agroforestry</option>
+                            <option value="water-management">Water Management</option>
+                            <option value="organic">Organic Certification</option>
+                            <option value="training">Training & Extension</option>
+                            <option value="research">Research & Development</option>
+                            <option value="policy">Policy & Advocacy</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="search">Search Keywords</label>
+                        <input type="text" id="search" placeholder="Keywords...">
+                    </div>
+                </div>
+                
+                <div class="filter-actions">
+                    <button type="button" class="view-button">Apply Filters</button>
+                </div>
+            </div>
+            
+            <!-- Job Categories -->
+            <div class="job-categories">
+                <button class="category-button active">All Opportunities</button>
+                <button class="category-button">Consulting</button>
+                <button class="category-button">Full-Time Jobs</button>
+                <button class="category-button">Project Collaboration</button>
+                <button class="category-button">Research</button>
+                <button class="category-button">Field Trials</button>
+            </div>
+            
+            <!-- Job Listings -->
+            <div class="job-grid">
+                <!-- Job 1 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-type-tag consulting">Consulting</span>
+                        <h3 class="job-title">Regenerative Agriculture Advisor</h3>
+                        <div class="job-organization">
+                            <img src="assets/images/org-logo-1.png" alt="Green Earth NGO" class="job-org-logo">
+                            <span>Green Earth NGO</span>
+                        </div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-details">
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Nepal (Remote possible)</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>3-6 months</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Competitive</span>
+                                </div>
+                            </div>
+                            <p>Seeking a regenerative agriculture advisor to develop training materials and provide technical guidance for a climate-resilient farming project in Nepal's mid-hills region. The consultant will work with local teams to adapt regenerative practices to mountain ecosystems.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Agroforestry</span>
+                                <span class="skill-tag">Soil Health</span>
+                                <span class="skill-tag">Water Harvesting</span>
+                                <span class="skill-tag">Training Development</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="secondary-button">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 2 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-type-tag full-time">Full-Time</span>
+                        <h3 class="job-title">Agroecology Program Manager</h3>
+                        <div class="job-organization">
+                            <img src="assets/images/org-logo-2.png" alt="Sustainable Food Systems Alliance" class="job-org-logo">
+                            <span>Sustainable Food Systems Alliance</span>
+                        </div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-details">
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Bangkok, Thailand</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Permanent</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>$45,000-55,000/year</span>
+                                </div>
+                            </div>
+                            <p>Lead our agroecology program across Southeast Asia, coordinating field projects, managing partnerships, and developing scaling strategies for regenerative agriculture innovations. You'll work with a diverse team to transform food systems across the region.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Program Management</span>
+                                <span class="skill-tag">Partnership Development</span>
+                                <span class="skill-tag">Agroecology</span>
+                                <span class="skill-tag">M&E</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="secondary-button">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 3 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-type-tag project">Project-Based</span>
+                        <h3 class="job-title">Regenerative Rice System Developer</h3>
+                        <div class="job-organization">
+                            <img src="assets/images/org-logo-3.png" alt="AgriFuture Institute" class="job-org-logo">
+                            <span>AgriFuture Institute</span>
+                        </div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-details">
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Vietnam (Mekong Delta)</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>6-12 months</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Project-based fee</span>
+                                </div>
+                            </div>
+                            <p>Design and implement regenerative rice cultivation systems for the Mekong Delta, focusing on water efficiency, methane reduction, and climate resilience. This project aims to develop prototype systems that can be scaled across the region.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Rice Systems</span>
+                                <span class="skill-tag">Water Management</span>
+                                <span class="skill-tag">Climate Adaptation</span>
+                                <span class="skill-tag">Field Implementation</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="secondary-button">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 4 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-type-tag research">Research</span>
+                        <h3 class="job-title">Soil Carbon Research Collaboration</h3>
+                        <div class="job-organization">
+                            <img src="assets/images/org-logo-4.png" alt="Climate Solutions Research Network" class="job-org-logo">
+                            <span>Climate Solutions Research Network</span>
+                        </div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-details">
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Multiple locations (India, Bangladesh)</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>1-2 years</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Research grant available</span>
+                                </div>
+                            </div>
+                            <p>We're seeking research partners with expertise in soil carbon sequestration to collaborate on a multi-year study across different agroecological zones. The project will quantify carbon benefits of various regenerative practices and develop monitoring protocols.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Soil Science</span>
+                                <span class="skill-tag">Carbon Sequestration</span>
+                                <span class="skill-tag">Field Research</span>
+                                <span class="skill-tag">Data Analysis</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="secondary-button">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 5 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-type-tag full-time">Full-Time</span>
+                        <h3 class="job-title">Regenerative Agriculture Training Officer</h3>
+                        <div class="job-organization">
+                            <img src="assets/images/org-logo-5.png" alt="Practical Action" class="job-org-logo">
+                            <span>Practical Action</span>
+                        </div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-details">
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Bangladesh (Dhaka with travel)</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Permanent</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Based on experience</span>
+                                </div>
+                            </div>
+                            <p>Develop and deliver training programs on regenerative agricultural practices for flood-prone and coastal communities in Bangladesh. The role involves adapting approaches to local conditions, training extension workers, and building farmer capacity.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Training & Facilitation</span>
+                                <span class="skill-tag">Climate Resilience</span>
+                                <span class="skill-tag">Flood Adaptation</span>
+                                <span class="skill-tag">Community Engagement</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="secondary-button">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Job 6 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <span class="job-type-tag project">Project-Based</span>
+                        <h3 class="job-title">Field Trial Collaborators - Tropical Agroforestry</h3>
+                        <div class="job-organization">
+                            <img src="assets/images/org-logo-6.png" alt="World Agroforestry (ICRAF)" class="job-org-logo">
+                            <span>World Agroforestry (ICRAF)</span>
+                        </div>
+                    </div>
+                    <div class="job-content">
+                        <div class="job-details">
+                            <div class="job-meta">
+                                <div class="job-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Indonesia, Philippines</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Seasonal (6-12 months)</span>
+                                </div>
+                                <div class="job-meta-item">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <span>Field support provided</span>
+                                </div>
+                            </div>
+                            <p>We're looking for farmers, local researchers, and field officers to participate in agroforestry trials combining timber, fruit trees, and annual crops in tropical settings. Participants will receive technical support, inputs, and compensation for their involvement.</p>
+                            <div class="job-skills">
+                                <span class="skill-tag">Agroforestry</span>
+                                <span class="skill-tag">Field Research</span>
+                                <span class="skill-tag">Tree Crop Management</span>
+                                <span class="skill-tag">Data Collection</span>
+                            </div>
+                        </div>
+                        <div class="job-actions">
+                            <a href="#" class="view-button">View Details</a>
+                            <a href="#" class="secondary-button">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="view-more">
+                <a href="#" class="secondary-button">View More Opportunities</a>
+            </div>
+            
+            <!-- Featured Opportunities Section -->
+            <div class="featured-section">
+                <div class="featured-header">
+                    <h2>Featured Opportunities</h2>
+                    <a href="#" class="view-all-link">View All Featured <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="job-grid">
+                    <!-- Featured Job 1 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <span class="job-type-tag consulting">Consulting</span>
+                            <h3 class="job-title">Impact Assessment Specialist</h3>
+                            <div class="job-organization">
+                                <img src="assets/images/org-logo-7.png" alt="The Rockefeller Foundation" class="job-org-logo">
+                                <span>The Rockefeller Foundation</span>
+                            </div>
+                        </div>
+                        <div class="job-content">
+                            <div class="job-details">
+                                <div class="job-meta">
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Remote (with travel)</span>
+                                    </div>
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>4-6 months</span>
+                                    </div>
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        <span>Competitive</span>
+                                    </div>
+                                </div>
+                                <p>Seeking an impact assessment specialist to develop monitoring frameworks and conduct evaluations of regenerative agriculture initiatives across Asia. The consultant will help quantify environmental, social, and economic outcomes of funded projects.</p>
+                                <div class="job-skills">
+                                    <span class="skill-tag">Impact Assessment</span>
+                                    <span class="skill-tag">M&E Framework Design</span>
+                                    <span class="skill-tag">Data Analysis</span>
+                                    <span class="skill-tag">Reporting</span>
+                                </div>
+                            </div>
+                            <div class="job-actions">
+                                <a href="#" class="view-button">View Details</a>
+                                <a href="#" class="secondary-button">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Featured Job 2 -->
+                    <div class="job-card">
+                        <div class="job-header">
+                            <span class="job-type-tag research">Research</span>
+                            <h3 class="job-title">Participatory Action Research Partners</h3>
+                            <div class="job-organization">
+                                <img src="assets/images/org-logo-8.png" alt="CGIAR" class="job-org-logo">
+                                <span>CGIAR Research Centers</span>
+                            </div>
+                        </div>
+                        <div class="job-content">
+                            <div class="job-details">
+                                <div class="job-meta">
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Multiple countries</span>
+                                    </div>
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>1-3 years</span>
+                                    </div>
+                                    <div class="job-meta-item">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        <span>Research funding available</span>
+                                    </div>
+                                </div>
+                                <p>CGIAR is seeking research partners from universities, NGOs, and community organizations to collaborate on participatory action research focused on scaling regenerative agriculture. Projects will engage farmers as co-researchers in developing locally adapted solutions.</p>
+                                <div class="job-skills">
+                                    <span class="skill-tag">Participatory Research</span>
+                                    <span class="skill-tag">Community Engagement</span>
+                                    <span class="skill-tag">Field Trials</span>
+                                    <span class="skill-tag">Collaborative Methods</span>
+                                </div>
+                            </div>
+                            <div class="job-actions">
+                                <a href="#" class="view-button">View Details</a>
+                                <a href="#" class="secondary-button">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Post Opportunity CTA -->
+    <section class="post-cta">
+        <div class="container">
+            <h2>Looking for Regenerative Agriculture Expertise?</h2>
+            <p>Post your job openings, consulting opportunities, research collaborations, or field trial needs to reach our network of qualified professionals across South and Southeast Asia.</p>
+            <a href="#" class="cta-button">Post an Opportunity</a>
+        </div>
+    </section>
+
+    <!-- Tips for Success Section -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="text-center">Tips for Success</h2>
+            <p class="text-center">Maximize your experience on our Jobs & Opportunities board</p>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-user-edit"></i>
+                    </div>
+                    <h3>Complete Your Profile</h3>
+                    <p>Create a detailed profile highlighting your skills and experience in regenerative agriculture to be discovered by potential employers or collaborators.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Set Up Alerts</h3>
+                    <p>Configure email alerts for opportunities that match your expertise, location preferences, and availability to never miss relevant openings.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Showcase Your Work</h3>
+                    <p>Upload examples of your past projects, publications, or case studies to demonstrate your practical experience and knowledge.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Be Specific</h3>
+                    <p>When searching, use specific filters and keywords related to your expertise to find the most relevant opportunities in regenerative agriculture.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Engage in the Community</h3>
+                    <p>Participate in forums and discussions to build your network and visibility within the regenerative agriculture community.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Connect Directly</h3>
+                    <p>Don't hesitate to reach out to organizations directly through our platform, even if they haven't posted a specific opportunity that matches your skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>RegenAsia Hub</h3>
+                    <p>A central platform for regenerative agriculture knowledge, community, tools, and fundraising in South and Southeast Asia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="knowledge.html">Knowledge</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="tools-training.html">Tools & Training</a></li>
+                        <li><a href="fundraising.html">Fundraising</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="ecosystem.html">Ecosystem</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenAsia Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Category button functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryButtons = document.querySelectorAll('.category-button');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter logic would go here
+                    // For now, just a visual indication of selected category
+                });
+            });
+        });
+    </script>
+</body>
+</html>
