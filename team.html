@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - RegenAsia Hub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Additional team page specific styles -->
+    <style>
+        .team-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+            height: 100%;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .team-photo {
+            height: 260px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-standard);
+        }
+        
+        .team-card:hover .team-photo img {
+            transform: scale(1.05);
+        }
+        
+        .team-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .team-name {
+            font-size: 1.4rem;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .team-title {
+            color: var(--primary-blue);
+            font-weight: 500;
+            margin-bottom: var(--spacing-xs);
+            font-size: 1.1rem;
+        }
+        
+        .team-organization {
+            color: #777;
+            font-style: italic;
+            margin-bottom: var(--spacing-md);
+            font-size: 0.95rem;
+        }
+        
+        .team-bio {
+            margin-bottom: var(--spacing-md);
+            font-size: 0.95rem;
+        }
+        
+        .team-social {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+        
+        .team-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            border-radius: 50%;
+            transition: all var(--transition-quick);
+        }
+        
+        .team-social a:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .placeholder-card {
+            background-color: var(--light-gray);
+            border: 2px dashed var(--medium-gray);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--spacing-lg);
+            min-height: 400px;
+        }
+        
+        .placeholder-icon {
+            font-size: 3rem;
+            color: var(--medium-gray);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .team-section {
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .team-section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .team-section:nth-child(odd) {
+            background-color: white;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .section-intro {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            text-align: center;
+        }
+    </style>
+</head>
+<body class="team-page">
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="RegenAsia Hub Logo">
+                    <span>RegenAsia Hub</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="knowledge.html">Knowledge</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="tools-training.html">Tools & Training</a></li>
+                    <li><a href="fundraising.html">Fundraising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="active"><a href="team.html">Our Team</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Our Team</h1>
+            <p>Meet the dedicated professionals behind RegenAsia Hub</p>
+        </div>
+    </section>
+
+    <!-- Implementing Team Section -->
+    <section class="team-section implementing-team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Implementing Team</h2>
+                <div class="section-intro">
+                    <p>Our core team from Practical Action is responsible for developing and managing the RegenAsia Hub platform, curating knowledge resources, and fostering community engagement.</p>
+                </div>
+            </div>
+            <div class="team-grid">
+                <!-- Ayan -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="assets/images/team-ayan.jpg" alt="Ayan - Chief Curator">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Ayan</h3>
+                        <p class="team-title">Chief Curator</p>
+                        <p class="team-organization">Practical Action</p>
+                        <p class="team-bio">Ayan leads the RegenAsia Hub initiative, bringing extensive experience in agricultural knowledge management and community building. With a background in sustainable agriculture and digital platforms, Ayan oversees the strategic direction and content development for the hub.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Arunabha -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="assets/images/team-arunabha.jpg" alt="Arunabha - Lead Curator">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Arunabha</h3>
+                        <p class="team-title">Lead Curator</p>
+                        <p class="team-organization">Practical Action</p>
+                        <p class="team-bio">Arunabha specializes in regenerative agriculture practices across South Asia. With deep knowledge of traditional farming methods and modern sustainable approaches, Arunabha curates resources and case studies that highlight effective practices and successful models from the region.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Placeholder for future team member -->
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Join Our Team</h3>
+                    <p>We're growing our team of passionate professionals dedicated to regenerative agriculture and climate resilience.</p>
+                    <a href="#contact" class="secondary-button">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advisors Section -->
+    <section class="team-section advisors">
+        <div class="container">
+            <div class="section-header">
+                <h2>Strategic Advisors</h2>
+                <div class="section-intro">
+                    <p>Our strategic advisors provide guidance, expertise, and insights to shape the direction and impact of RegenAsia Hub. They bring diverse perspectives from philanthropy, policy, research, and practice.</p>
+                </div>
+            </div>
+            <div class="team-grid">
+                <!-- Deepali Khanna -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="assets/images/team-deepali.jpg" alt="Deepali Khanna">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Deepali Khanna</h3>
+                        <p class="team-title">Vice President, Asia Regional Office</p>
+                        <p class="team-organization">The Rockefeller Foundation</p>
+                        <p class="team-bio">Deepali leads The Rockefeller Foundation's regional office in Asia, overseeing the Foundation's work across the continent. With extensive experience in strategic philanthropy and sustainable development, she provides valuable guidance on scaling regenerative agriculture initiatives.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-globe"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Saahil Parekh -->
+                <div class="team-card">
+                    <div class="team-photo">
+                        <img src="assets/images/team-saahil.jpg" alt="Saahil Parekh">
+                    </div>
+                    <div class="team-content">
+                        <h3 class="team-name">Saahil Parekh</h3>
+                        <p class="team-title">Food Initiative</p>
+                        <p class="team-organization">The Rockefeller Foundation</p>
+                        <p class="team-bio">Saahil works with The Rockefeller Foundation's Food Initiative, focusing on advancing sustainable and equitable food systems. His expertise in agricultural innovation and food security informs the RegenAsia Hub's approach to knowledge sharing and community building.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Placeholder for future advisor -->
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Future Advisor</h3>
+                    <p>We're expanding our advisory board with experts in regenerative agriculture, climate resilience, and sustainable development.</p>
+                </div>
+                
+                <!-- Placeholder for future advisor -->
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Future Advisor</h3>
+                    <p>We're expanding our advisory board with experts in regenerative agriculture, climate resilience, and sustainable development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Organizations Section -->
+    <section class="team-section members">
+        <div class="container">
+            <div class="section-header">
+                <h2>Member Organizations</h2>
+                <div class="section-intro">
+                    <p>RegenAsia Hub is supported by a network of member organizations committed to advancing regenerative agriculture and climate-resilient food systems across South and Southeast Asia.</p>
+                </div>
+            </div>
+            <div class="team-grid">
+                <!-- Placeholder for member organization -->
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Member Organization</h3>
+                    <p>Organizations working on regenerative agriculture, climate resilience, and sustainable food systems across the region.</p>
+                </div>
+                
+                <!-- Placeholder for member organization -->
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Member Organization</h3>
+                    <p>Organizations working on regenerative agriculture, climate resilience, and sustainable food systems across the region.</p>
+                </div>
+                
+                <!-- Placeholder for member organization -->
+                <div class="placeholder-card">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Member Organization</h3>
+                    <p>Organizations working on regenerative agriculture, climate resilience, and sustainable food systems across the region.</p>
+                </div>
+                
+                <!-- Become a Member -->
+                <div class="placeholder-card" style="background-color: var(--primary-blue); color: white; border: none;">
+                    <div class="placeholder-icon">
+                        <i class="fas fa-handshake" style="color: white;"></i>
+                    </div>
+                    <h3>Become a Member</h3>
+                    <p>Join our network of organizations committed to advancing regenerative agriculture and climate-resilient food systems.</p>
+                    <a href="#contact" class="cta-button" style="background-color: white; color: var(--primary-blue);">Join Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Us / Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Join Our Network</h2>
+                <p>Interested in joining the RegenAsia Hub team, advisory board, or member network? Reach out to learn more about collaboration opportunities.</p>
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@regenasia-hub.org">info@regenasia-hub.org</a></p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Headquarters</h3>
+                        <p>Bangkok, Thailand</p>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+66 2 123 4567</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-container">
+                <h3>Get in Touch</h3>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="organization">Organization</label>
+                        <input type="text" id="organization" name="organization">
+                    </div>
+                    <div class="form-group">
+                        <label for="interest">Area of Interest</label>
+                        <select id="interest" name="interest">
+                            <option value="">Select an option</option>
+                            <option value="team">Join the Team</option>
+                            <option value="advisor">Become an Advisor</option>
+                            <option value="member">Become a Member Organization</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>RegenAsia Hub</h3>
+                    <p>A central platform for regenerative agriculture knowledge, community, tools, and fundraising in South and Southeast Asia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="knowledge.html">Knowledge</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="tools-training.html">Tools & Training</a></li>
+                        <li><a href="fundraising.html">Fundraising</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenAsia Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
