@@ -1,1 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising Portal - RegenAsia Hub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="fundraising-page">
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="RegenAsia Hub Logo">
+                    <span>RegenAsia Hub</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="knowledge.html">Knowledge</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="tools-training.html">Tools & Training</a></li>
+                    <li class="active"><a href="fundraising.html">Fundraising</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Fundraising Portal</h1>
+            <p>Connect regenerative agriculture projects with funding and partnership opportunities</p>
+        </div>
+    </section>
+
+    <!-- Fundraising Intro -->
+    <section class="fundraising-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>Support Climate-Resilient Agriculture</h2>
+                <p>The Fundraising Portal connects promising regenerative agriculture initiatives with donors, investors, and partners looking to make a tangible impact on climate resilience, farmer livelihoods, and ecosystem health across South and Southeast Asia.</p>
+                <div class="intro-actions">
+                    <a href="#project-showcase" class="cta-button">Support a Project</a>
+                    <a href="#submit-project" class="secondary-button">Submit Your Project</a>
+                </div>
+            </div>
+            <div class="impact-stats">
+                <div class="stat-item">
+                    <span class="stat-number">45+</span>
+                    <span class="stat-label">Projects Funded</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2.8M</span>
+                    <span class="stat-label">Raised to Date</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">12,000+</span>
+                    <span class="stat-label">Farmers Impacted</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">7</span>
+                    <span class="stat-label">Countries</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Showcase Section -->
+    <section class="project-showcase" id="project-showcase">
+        <div class="container">
+            <div class="section-header">
+                <h2>Project Showcase</h2>
+                <p>Featured initiatives making real impact through regenerative agriculture</p>
+                <div class="showcase-filters">
+                    <button class="filter-button active" data-filter="all">All Projects</button>
+                    <button class="filter-button" data-filter="community">Community-Led</button>
+                    <button class="filter-button" data-filter="research">Research & Innovation</button>
+                    <button class="filter-button" data-filter="training">Training & Capacity Building</button>
+                </div>
+            </div>
+            <div class="project-cards">
+                <div class="project-card" data-category="community">
+                    <div class="project-image">
+                        <img src="assets/images/project-1.jpg" alt="Agroforestry Transition Project">
+                        <span class="project-location"><i class="fas fa-map-marker-alt"></i> Philippines</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Mindanao Coffee Agroforestry Transition</h3>
+                        <p class="project-excerpt">Supporting 500 smallholder coffee farmers to transition to regenerative agroforestry systems that improve biodiversity, soil health, and climate resilience while enhancing livelihoods.</p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-tree"></i></span>
+                                <span class="impact-text">50,000 trees planted</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-users"></i></span>
+                                <span class="impact-text">500 families supported</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-leaf"></i></span>
+                                <span class="impact-text">1,200 hectares regenerated</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="view-details-button">View Details</a>
+                            <a href="#" class="donate-button">Support Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="research">
+                    <div class="project-image">
+                        <img src="assets/images/project-2.jpg" alt="Soil Carbon Research">
+                        <span class="project-location"><i class="fas fa-map-marker-alt"></i> India</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Carbon Sequestration in Dryland Farming Systems</h3>
+                        <p class="project-excerpt">Research project measuring and enhancing carbon sequestration potential of regenerative practices in dryland regions of India, with demonstration plots and farmer training.</p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-microscope"></i></span>
+                                <span class="impact-text">5-year scientific study</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-flask"></i></span>
+                                <span class="impact-text">10 demonstration sites</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-cloud"></i></span>
+                                <span class="impact-text">Quantified carbon benefits</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="view-details-button">View Details</a>
+                            <a href="#" class="donate-button">Support Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="training">
+                    <div class="project-image">
+                        <img src="assets/images/project-3.jpg" alt="Women Farmers Training">
+                        <span class="project-location"><i class="fas fa-map-marker-alt"></i> Nepal</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>Women-Led Climate-Resilient Agriculture Network</h3>
+                        <p class="project-excerpt">Empowering women farmers in Nepal to lead regenerative agriculture adoption through training, peer mentoring, and demonstration plots in climate-vulnerable mountain communities.</p>
+                        <div class="project-impact">
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-female"></i></span>
+                                <span class="impact-text">200 women farmer leaders</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-seedling"></i></span>
+                                <span class="impact-text">20 demo farms established</span>
+                            </div>
+                            <div class="impact-item">
+                                <span class="impact-icon"><i class="fas fa-hands-helping"></i></span>
+                                <span class="impact-text">Reaching 2,000+ households</span>
+                            </div>
+                        </div>
+                        <div class="project-actions">
+                            <a href="#" class="view-details-button">View Details</a>
+                            <a href="#" class="donate-button">Support Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="secondary-button">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crowdfunding Campaigns Section -->
+    <section class="crowdfunding-campaigns">
+        <div class="container">
+            <div class="section-header">
+                <h2>Active Crowdfunding Campaigns</h2>
+                <p>Join these community-backed funding initiatives</p>
+            </div>
+            <div class="campaign-cards">
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>Community Seed Bank Network</h3>
+                        <span class="campaign-status">Urgent: 8 days left</span>
+                    </div>
+                    <div class="campaign-content">
+                        <p class="campaign-description">Establishing a network of community seed banks to preserve and exchange indigenous crop varieties adapted to local climates across Sri Lanka.</p>
+                        <div class="campaign-progress">
+                            <div class="progress-info">
+                                <span class="progress-goal">$15,000 goal</span>
+                                <span class="progress-raised">$11,250 raised</span>
+                                <span class="progress-percent">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="campaign-supporters">
+                            <span><i class="fas fa-user-friends"></i> 87 supporters</span>
+                        </div>
+                        <a href="#" class="donate-button">Donate Now</a>
+                    </div>
+                </div>
+                
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>Mobile Soil Testing Labs</h3>
+                        <span class="campaign-status">21 days left</span>
+                    </div>
+                    <div class="campaign-content">
+                        <p class="campaign-description">Funding mobile soil testing units to provide affordable soil health assessments for small-scale farmers in remote areas of Thailand.</p>
+                        <div class="campaign-progress">
+                            <div class="progress-info">
+                                <span class="progress-goal">$9,000 goal</span>
+                                <span class="progress-raised">$3,780 raised</span>
+                                <span class="progress-percent">42%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 42%;"></div>
+                            </div>
+                        </div>
+                        <div class="campaign-supporters">
+                            <span><i class="fas fa-user-friends"></i> 53 supporters</span>
+                        </div>
+                        <a href="#" class="donate-button">Donate Now</a>
+                    </div>
+                </div>
+                
+                <div class="campaign-card">
+                    <div class="campaign-header">
+                        <h3>Regenerative Rice Farmer Field Schools</h3>
+                        <span class="campaign-status">36 days left</span>
+                    </div>
+                    <div class="campaign-content">
+                        <p class="campaign-description">Expanding farmer field schools teaching regenerative rice cultivation methods to reduce methane emissions and water use in Vietnam's Mekong Delta.</p>
+                        <div class="campaign-progress">
+                            <div class="progress-info">
+                                <span class="progress-goal">$12,500 goal</span>
+                                <span class="progress-raised">$7,875 raised</span>
+                                <span class="progress-percent">63%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 63%;"></div>
+                            </div>
+                        </div>
+                        <div class="campaign-supporters">
+                            <span><i class="fas fa-user-friends"></i> 112 supporters</span>
+                        </div>
+                        <a href="#" class="donate-button">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="secondary-button">View All Campaigns</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Opportunities Section -->
+    <section class="partnership-opportunities">
+        <div class="container">
+            <div class="section-header">
+                <h2>Partnership Opportunities</h2>
+                <p>Explore ways to collaborate with regenerative agriculture initiatives</p>
+            </div>
+            <div class="partnership-types">
+                <div class="partnership-type">
+                    <div class="partnership-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3>Corporate Partnerships</h3>
+                    <p>For companies seeking to invest in sustainable supply chains, carbon offsets, or corporate social responsibility initiatives related to regenerative agriculture.</p>
+                    <ul class="partnership-options">
+                        <li>Supply chain resilience projects</li>
+                        <li>Carbon insetting programs</li>
+                        <li>Employee engagement opportunities</li>
+                        <li>Co-branded impact initiatives</li>
+                    </ul>
+                    <a href="#" class="partnership-button">Explore Corporate Partnerships</a>
+                </div>
+                
+                <div class="partnership-type">
+                    <div class="partnership-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>NGO & Foundation Collaboration</h3>
+                    <p>For NGOs and foundations interested in coordinating efforts, co-funding projects, or accessing technical expertise for regenerative agriculture programs.</p>
+                    <ul class="partnership-options">
+                        <li>Joint implementation projects</li>
+                        <li>Knowledge exchange programs</li>
+                        <li>Co-funding opportunities</li>
+                        <li>Technical advisory services</li>
+                    </ul>
+                    <a href="#" class="partnership-button">Explore NGO Partnerships</a>
+                </div>
+                
+                <div class="partnership-type">
+                    <div class="partnership-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Individual Donor Programs</h3>
+                    <p>For individuals seeking meaningful ways to support regenerative agriculture and climate resilience through donations, advocacy, or volunteering.</p>
+                    <ul class="partnership-options">
+                        <li>Recurring donation programs</li>
+                        <li>Project sponsorship opportunities</li>
+                        <li>Legacy giving options</li>
+                        <li>Field visit experiences</li>
+                    </ul>
+                    <a href="#" class="partnership-button">Explore Individual Programs</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stories Section -->
+    <section class="impact-stories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Impact Stories</h2>
+                <p>See how your support transforms farmers' lives and landscapes</p>
+            </div>
+            <div class="story-carousel">
+                <div class="story-slide">
+                    <div class="story-image">
+                        <img src="assets/images/story-1.jpg" alt="Impact Story 1">
+                    </div>
+                    <div class="story-content">
+                        <h3>"From Degradation to Regeneration"</h3>
+                        <p class="story-excerpt">How a community in North Sumatra transformed eroded hillsides into productive regenerative farms with community-based agroforestry.</p>
+                        <a href="#" class="read-more-button">Read Full Story</a>
+                    </div>
+                </div>
+                
+                <div class="story-slide">
+                    <div class="story-image">
+                        <img src="assets/images/story-2.jpg" alt="Impact Story 2">
+                    </div>
+                    <div class="story-content">
+                        <h3>"Women Leading Climate Resilience"</h3>
+                        <p class="story-excerpt">The journey of women farmer collectives in Nepal who pioneered water-smart farming techniques in drought-affected villages.</p>
+                        <a href="#" class="read-more-button">Read Full Story</a>
+                    </div>
+                </div>
+                
+                <div class="story-slide">
+                    <div class="story-image">
+                        <img src="assets/images/story-3.jpg" alt="Impact Story 3">
+                    </div>
+                    <div class="story-content">
+                        <h3>"Resilience Through Diversity"</h3>
+                        <p class="story-excerpt">How Philippine farmers survived devastating typhoons by adopting diverse, regenerative farming systems.</p>
+                        <a href="#" class="read-more-button">Read Full Story</a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <button class="prev-button"><i class="fas fa-arrow-left"></i></button>
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <button class="next-button"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submit Project Section -->
+    <section class="submit-project" id="submit-project">
+        <div class="container">
+            <div class="submit-content">
+                <div class="submit-text">
+                    <h2>Have a Project Seeking Support?</h2>
+                    <p>If you're working on a regenerative agriculture initiative in South or Southeast Asia and looking for funding or partnerships, we'd love to hear from you.</p>
+                    <p>Projects that qualify for our platform typically:</p>
+                    <ul class="qualification-list">
+                        <li>Implement regenerative agriculture practices</li>
+                        <li>Enhance climate resilience</li>
+                        <li>Benefit small-scale farmers or rural communities</li>
+                        <li>Have clear, measurable impact objectives</li>
+                        <li>Demonstrate potential for scaling or replication</li>
+                    </ul>
+                </div>
+                <div class="submit-action">
+                    <a href="#" class="cta-button">Submit Your Project</a>
+                    <p class="action-note">Our team will review your submission and contact you within 5 business days.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>RegenAsia Hub</h3>
+                    <p>A central platform for regenerative agriculture knowledge, community, tools, and fundraising in South and Southeast Asia.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="knowledge.html">Knowledge</a></li>
+                        <li><a href="community.html">Community</a></li>
+                        <li><a href="tools-training.html">Tools & Training</a></li>
+                        <li><a href="fundraising.html">Fundraising</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect With Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Subscribe to Our Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 RegenAsia Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
