@@ -1,221 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecosystem Hub - RegenAsia Hub</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .ecosystem-intro {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto 3rem;
-        }
+<!-- Enhanced Header Navigation -->
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">
+                <img src="assets/images/logo.png" alt="RegenAsia Hub Logo">
+                <span>RegenAsia Hub</span>
+            </a>
+        </div>
         
-        .stakeholder-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+        <!-- Primary Navigation -->
+        <nav class="main-nav">
+            <ul class="primary-menu">
+                <li class="menu-item has-dropdown">
+                    <a href="ecosystem.html" class="menu-link">
+                        <i class="fas fa-seedling"></i>
+                        <span>Explore</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">
+                            <h3>Explore the Ecosystem</h3>
+                            <p>Discover our interconnected resources and initiatives</p>
+                        </div>
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-map"></i> Navigate by Area</h4>
+                                <ul>
+                                    <li><a href="ecosystem.html"><i class="fas fa-sitemap"></i> Ecosystem Overview</a></li>
+                                    <li><a href="knowledge.html"><i class="fas fa-book"></i> Knowledge Repository</a></li>
+                                    <li><a href="community.html"><i class="fas fa-users"></i> Community Hub</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-compass"></i> Find Your Path</h4>
+                                <ul>
+                                    <li><a href="farmers-path.html"><i class="fas fa-tractor"></i> For Farmers</a></li>
+                                    <li><a href="ngo-path.html"><i class="fas fa-hands-helping"></i> For NGOs</a></li>
+                                    <li><a href="research-path.html"><i class="fas fa-microscope"></i> For Researchers</a></li>
+                                    <li><a href="corporate-path.html"><i class="fas fa-building"></i> For Companies</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="menu-item has-dropdown">
+                    <a href="tools-training.html" class="menu-link">
+                        <i class="fas fa-tools"></i>
+                        <span>Resources</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">
+                            <h3>Tools & Resources</h3>
+                            <p>Practical support for regenerative agriculture</p>
+                        </div>
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-graduation-cap"></i> Learn & Practice</h4>
+                                <ul>
+                                    <li><a href="tools-training.html"><i class="fas fa-toolbox"></i> Practical Toolkits</a></li>
+                                    <li><a href="tools-training.html#modules"><i class="fas fa-laptop"></i> Learning Modules</a></li>
+                                    <li><a href="tools-training.html#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-handshake"></i> Connect & Support</h4>
+                                <ul>
+                                    <li><a href="farmers-path.html"><i class="fas fa-store"></i> Market Access</a></li>
+                                    <li><a href="jobs-opportunities.html"><i class="fas fa-briefcase"></i> Job Opportunities</a></li>
+                                    <li><a href="fundraising.html"><i class="fas fa-project-diagram"></i> Project Showcase</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="menu-item has-dropdown">
+                    <a href="funding-opportunities.html" class="menu-link highlight-link">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>Funding</span>
+                        <span class="menu-badge">New</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">
+                            <h3>Funding & Support</h3>
+                            <p>Financial resources for regenerative initiatives</p>
+                        </div>
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-search-dollar"></i> Find Funding</h4>
+                                <ul>
+                                    <li><a href="funding-opportunities.html"><i class="fas fa-list-ul"></i> All Opportunities</a></li>
+                                    <li><a href="funding-opportunities.html#live"><i class="fas fa-calendar-check"></i> Active Grants</a></li>
+                                    <li><a href="funding-opportunities.html#donors"><i class="fas fa-building"></i> Donor Profiles</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-file-alt"></i> Application Support</h4>
+                                <ul>
+                                    <li><a href="funding-opportunities.html#resources"><i class="fas fa-pencil-alt"></i> Proposal Resources</a></li>
+                                    <li><a href="funding-opportunities.html#research"><i class="fas fa-flask"></i> Research Funding</a></li>
+                                    <li><a href="fundraising.html"><i class="fas fa-hand-holding-heart"></i> Support Projects</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="menu-item has-dropdown">
+                    <a href="about.html" class="menu-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                    <div class="dropdown-menu">
+                        <div class="dropdown-header">
+                            <h3>About Us</h3>
+                            <p>Learn about our mission and people</p>
+                        </div>
+                        <div class="dropdown-content">
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-star"></i> Our Organization</h4>
+                                <ul>
+                                    <li><a href="about.html"><i class="fas fa-bullseye"></i> Mission & Vision</a></li>
+                                    <li><a href="team.html"><i class="fas fa-users"></i> Our Team</a></li>
+                                    <li><a href="about.html#partner-organizations"><i class="fas fa-handshake"></i> Partners</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4><i class="fas fa-envelope"></i> Get in Touch</h4>
+                                <ul>
+                                    <li><a href="about.html#contact"><i class="fas fa-paper-plane"></i> Contact Us</a></li>
+                                    <li><a href="community.html"><i class="fas fa-comments"></i> Join Community</a></li>
+                                    <li><a href="about.html"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
         
-        .stakeholder-card {
-            background-color: white;
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            overflow: hidden;
-            transition: transform var(--transition-standard), box-shadow var(--transition-standard);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .stakeholder-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .stakeholder-icon {
-            background-color: var(--primary-blue);
-            color: white;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-        
-        .stakeholder-content {
-            padding: var(--spacing-lg);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .stakeholder-content h3 {
-            margin-bottom: var(--spacing-sm);
-            color: var(--primary-blue);
-        }
-        
-        .stakeholder-problems {
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .problem-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .problem-item i {
-            color: var(--accent-red);
-            margin-right: var(--spacing-sm);
-            margin-top: 0.3rem;
-        }
-        
-        .solutions-heading {
-            font-weight: bold;
-            margin-bottom: var(--spacing-sm);
-            color: var(--primary-green);
-            display: flex;
-            align-items: center;
-        }
-        
-        .solutions-heading i {
-            margin-right: var(--spacing-sm);
-        }
-        
-        .solution-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: auto;
-        }
-        
-        .solution-link {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius-sm);
-            transition: background-color var(--transition-quick);
-        }
-        
-        .solution-link:hover {
-            background-color: var(--medium-gray);
-        }
-        
-        .solution-link i {
-            margin-right: var(--spacing-sm);
-            color: var(--primary-green);
-        }
-        
-        .metrics-section {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .metric-card {
-            background-color: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: var(--border-radius-md);
-        }
-        
-        .metric-number {
-            font-size: 3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-        
-        .metric-label {
-            font-size: 1.1rem;
-        }
-        
-        .ecosystem-map-section {
-            padding: 4rem 0;
-            background-color: white;
-        }
-        
-        .ecosystem-map {
-            max-width: 1000px;
-            margin: 2rem auto 0;
-            border: 1px solid var(--medium-gray);
-            border-radius: var(--border-radius-md);
-            padding: 1rem;
-        }
-        
-        .platform-benefits {
-            text-align: center;
-            padding: 3rem 0;
-            background-color: var(--light-gray);
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .benefit-card {
-            background-color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius-md);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: var(--primary-yellow);
-            margin-bottom: 1rem;
-        }
-        
-        .cta-section {
-            background-color: var(--primary-yellow);
-            color: white;
-            text-align: center;
-            padding: 4rem 0;
-        }
-        
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .cta-white {
-            background-color: white;
-            color: var(--primary-yellow);
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius-md);
-            font-weight: bold;
-            transition: background-color var(--transition-quick);
-        }
-        
-        .cta-white:hover {
-            background-color: var(--light-gray);
-            color: var(--primary-yellow);
-        }
-    </style>
-</head>
+        <!-- Action Button (CTA) -->
+        <div class="header-actions">
+            <a href="community.html#join" class="action-button pulse-animation">
+                <i class="fas fa-user-plus"></i>
+                <span>Join Us</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="toggle-icon"></span>
+            </button>
+        </div>
+    </div>
+</header>
 <body class="ecosystem-page">
     <!-- Header Navigation -->
     <header class="main-header">
