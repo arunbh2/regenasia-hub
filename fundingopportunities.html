@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funding Opportunities - RegenAsia Hub</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Funding-specific styles */
+        .funding-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+        }
+        
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-quick);
+        }
+        
+        .tab-button.active {
+            background-color: #1B9CFC;
+            color: white;
+        }
+        
+        .tab-button:hover:not(.active) {
+            background-color: var(--medium-gray);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .filter-bar {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .filter-group {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .filter-group select,
+        .filter-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--medium-gray);
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .funding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .funding-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .funding-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .funding-header {
+            padding: 1.5rem;
+            background-color: #1B9CFC;
+            color: white;
+        }
+        
+        .funding-type-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .funding-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .funding-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .meta-item i {
+            margin-right: 0.5rem;
+            color: #1B9CFC;
+        }
+        
+        .meta-label {
+            font-weight: 500;
+            margin-right: 0.25rem;
+        }
+        
+        .funding-description {
+            margin-bottom: 1.5rem;
+        }
+        
+        .funding-focus {
+            margin-bottom: 1.5rem;
+        }
+        
+        .focus-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .focus-title i {
+            color: #2ECC71;
+            margin-right: 0.5rem;
+        }
+        
+        .focus-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .focus-tag {
+            display: inline-block;
+            background-color: var(--light-gray);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+        }
+        
+        .funding-actions {
+            margin-top: auto;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .donor-profile-section {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .donor-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .donor-header {
+            padding: 2rem;
+            background-color: #1B9CFC;
+            color: white;
+            text-align: center;
+        }
+        
+        .donor-logo {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            padding: 1rem;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .donor-logo img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+        
+        .donor-content {
+            padding: 2rem;
+        }
+        
+        .donor-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .donor-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .donor-section-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .donor-section-title i {
+            color: #1B9CFC;
+            margin-right: 0.5rem;
+        }
+        
+        .resource-section {
+            padding: 4rem 0;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2rem;
+        }
+        
+        .resource-icon {
+            font-size: 2.5rem;
+            color: #FFA600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .resource-card h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-card p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .resource-link {
+            margin-top: auto;
+            text-align: center;
+        }
+        
+        .research-funding-section {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+        }
+        
+        .research-funding-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            padding: 2rem;
+        }
+        
+        .alert-box {
+            background-color: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #E74C3C;
+            padding: 1.5rem;
+            border-radius: var(--border-radius-sm);
+            margin-bottom: 2rem;
+        }
+        
+        .alert-box h3 {
+            color: #E74C3C;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .alert-box h3 i {
+            margin-right: 0.5rem;
+        }
+        
+        .newsletter-box {
+            background-color: #FFA600;
+            padding: 2rem;
+            border-radius: var(--border-radius-md);
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+        }
+        
+        .newsletter-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+        }
+        
+        .newsletter-form button {
+            background-color: #1B9CFC;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+            cursor: pointer;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #1689d7;
+        }
+        
+        .deadline-alert {
+            display: inline-block;
+            background-color: #E74C3C;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+        }
+        
+        .status-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+            margin-right: 0.5rem;
+        }
+        
+        .status-active {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ECC71;
+        }
+        
+        .status-upcoming {
+            background-color: rgba(52, 152, 219, 0.2);
+            color: #1B9CFC;
+        }
+        
+        .status-closed {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #E74C3C;
+        }
+        
+        .status-recurring {
+            background-color: rgba(230, 126, 34, 0.2);
+            color: #E67E22;
+        }
+        
+        .view-button, .secondary-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-quick);
+        }
+        
+        .view-button {
+            background-color: #1B9CFC;
+            color: white;
+        }
+        
+        .view-button:hover {
+            background-color: #1689d7;
+        }
+        
+        .secondary-button {
+            background-color: var(--light-gray);
+            color: #333;
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--medium-gray);
+        }
+        
+        .stakeholder-pathways {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pathway-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        
+        .pathway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .pathway-icon {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .pathway-farmer { background-color: #2ECC71; }
+        .pathway-ngo { background-color: #1B9CFC; }
+        .pathway-researcher { background-color: #9B59B6; }
+        .pathway-funder { background-color: #FFA600; }
+        
+        .pathway-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .category-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-quick);
+        }
+        
+        .category-button.active {
+            background-color: #1B9CFC;
+            color: white;
+        }
+        
+        .category-button:hover:not(.active) {
+            background-color: var(--medium-gray);
+        }
+        
+        .success-story {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .story-content {
+            padding: 1.5rem;
+        }
+        
+        .story-meta {
+            display: flex;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .story-meta > div {
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-meta i {
+            margin-right: 0.5rem;
+        }
+        
+        .impact-section {
+            background-color: var(--light-gray);
+            padding: 4rem 0;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .impact-item {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .impact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1B9CFC;
+            margin-bottom: 0.5rem;
+        }
+        
+        .funding-faq {
+            margin-top: 4rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-question i {
+            color: #1B9CFC;
+            margin-right: 0.75rem;
+        }
+        
+        .sub-section-title {
+            font-size: 1.4rem;
+            color: #1B9CFC;
+            margin-bottom: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .funder-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .funder-type-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .funder-type-icon {
+            font-size: 2.5rem;
+            color: #1B9CFC;
+            margin-bottom: 1rem;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .tip-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            height: 100%;
+        }
+        
+        .tip-icon {
+            font-size: 2rem;
+            color: #2ECC71;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="funding-page">
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="RegenAsia Hub Logo">
+                    <span>RegenAsia Hub</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
+                    <li><a href="knowledge.html">Knowledge</a></li>
+                    <li><a href="community.html">Community</a></li>
+                    <li><a href="tools-training.html">Tools & Training</a></li>
+                    <li><a href="fundraising.html">Fundraising</a></li>
+                    <li class="active"><a href="funding-opportunities.html">Funding Opportunities</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="team.html">Our Team</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-hand-holding-usd"></i> Funding Opportunities</h1>
+            <p>Discover grants, investments, and partnerships for regenerative agriculture and climate resilience initiatives</p>
+        </div>
+    </section>
+
+    <!-- Funding Intro Section -->
+    <section class="intro-section">
+        <div class="container">
+            <div class="funding-intro">
+                <h2>Connect to Resources for Your Regenerative Agriculture Journey</h2>
+                <p>This comprehensive resource hub provides information on current and recurring funding opportunities focused on regenerative agriculture, climate resilience, and community development across South and Southeast Asia. Whether you're a farmer, NGO, researcher, or social enterprise, you'll find relevant funding sources to support your work.</p>
+            </div>
+            
+            <!-- Stakeholder Pathways -->
+            <div class="stakeholder-pathways">
+                <h3>Find Funding Resources for Your Role</h3>
+                <div class="pathway-grid">
+                    <a href="#farmer-funding" class="pathway-card">
+                        <div class="pathway-icon pathway-farmer">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <div class="pathway-content">
+                            <h3>Farmers & Communities</h3>
+                            <p>Find community grants, technical assistance funds, and market access support for implementing regenerative practices on your farm.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#ngo-funding" class="pathway-card">
+                        <div class="pathway-icon pathway-ngo">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="pathway-content">
+                            <h3>NGOs & Civil Society</h3>
+                            <p>Discover institutional funding, foundation grants, and partnership opportunities to scale your regenerative agriculture initiatives.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#research-funding" class="pathway-card">
+                        <div class="pathway-icon pathway-researcher">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="pathway-content">
+                            <h3>Researchers & Academics</h3>
+                            <p>Explore research grants, collaborative funding opportunities, and innovation challenges to advance regenerative agriculture science.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#funders-hub" class="pathway-card">
+                        <div class="pathway-icon pathway-funder">
+                            <i class="fas fa-donate"></i>
+                        </div>
+                        <div class="pathway-content">
+                            <h3>Funders & Investors</h3>
+                            <p>Connect with verified projects, due diligence resources, and co-funding partners to maximize your impact in regenerative agriculture.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" data-tab="live">Live Grant Opportunities</button>
+                <button class="tab-button" data-tab="donors">Donor Profiles</button>
+                <button class="tab-button" data-tab="research">Research Funding</button>
+                <button class="tab-button" data-tab="resources">Proposal Support</button>
+            </div>
+            
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="funding-type">Funding Type</label>
+                        <select id="funding-type">
+                            <option value="all">All Types</option>
+                            <option value="grant">Grants</option>
+                            <option value="investment">Impact Investment</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="prize">Awards & Prizes</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="region">Region Focus</label>
+                        <select id="region">
+                            <option value="all">All Regions</option>
+                            <option value="south-asia">South Asia</option>
+                            <option value="southeast-asia">Southeast Asia</option>
+                            <option value="global">Global</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="focus-area">Focus Area</label>
+                        <select id="focus-area">
+                            <option value="all">All Areas</option>
+                            <option value="agriculture">Regenerative Agriculture</option>
+                            <option value="adaptation">Climate Adaptation</option>
+                            <option value="community">Community Development</option>
+                            <option value="water">Water Management</option>
+                            <option value="biodiversity">Biodiversity</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="deadline">Deadline</label>
+                        <select id="deadline">
+                            <option value="all">All Deadlines</option>
+                            <option value="urgent">Urgent (< 30 days)</option>
+                            <option value="upcoming">Upcoming (1-3 months)</option>
+                            <option value="future">Future (> 3 months)</option>
+                            <option value="rolling">Rolling/Continuous</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Live Grant Opportunities Tab Content -->
+            <div class="tab-content active" id="live">
+                <div class="alert-box">
+                    <h3><i class="fas fa-info-circle"></i> Grant Alert</h3>
+                    <p>These opportunities are active or recurring. Application deadlines may change, so always verify details on the funder's official website before applying.</p>
+                </div>
+                
+                <div class="funding-grid">
+                    <!-- Grant 1: Regenerative Fund for Nature -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Global Grant</span>
+                            <span class="status-tag status-recurring">Annual Cycle</span>
+                            <h3>Regenerative Fund for Nature</h3>
+                            <p>Conservation International, Kering & Inditex</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>Global (includes India)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Cycle:</span>
+                                    <span>Annual (2024 closed, next expected 2025)</span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>Established in 2021 to transform 1 million hectares of farms by 2026 for regenerative production of key materials (leather, cotton, wool, cashmere). Provides grants to farming groups, NGOs, and project leaders implementing practices that improve soil health, biodiversity, and farmer livelihoods.</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Sustainable Agriculture</span>
+                                    <span class="focus-tag">Soil Restoration</span>
+                                    <span class="focus-tag">Supply Chain</span>
+                                    <span class="focus-tag">Rural Communities</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://www.kering.com/en/sustainability/safeguarding-the-planet/regenerative-fund-for-nature/" class="view-button" target="_blank">Program Details</a>
+                                <a href="https://www.fundsforngos.org/agriculture-funds-for-ngos/call-for-applications-regenerative-fund-for-nature/" class="secondary-button" target="_blank">Application Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grant 2: Asia Climate Solutions Design Grant -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Design Grant</span>
+                            <span class="status-tag status-active">Active</span>
+                            <h3>Asia Climate Solutions Design Grant</h3>
+                            <p>Convergence Blended Finance</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>Asia-Pacific</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Deadline:</span>
+                                    <span>November 22, 2024 <span class="deadline-alert">Upcoming</span></span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>Supports the design and launch of blended-finance projects addressing climate transition and resilience in Asia. Target sectors include nature-based solutions, clean energy transitions, sustainable cities, and infrastructure. Offers two tiers: Feasibility Study grants (USD $50k–$200k) and Proof-of-Concept grants ($200k–$400k).</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Blended Finance</span>
+                                    <span class="focus-tag">Climate Adaptation</span>
+                                    <span class="focus-tag">Renewable Energy</span>
+                                    <span class="focus-tag">Nature-based Solutions</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://www.terravivagrants.org/grant-makers/convergence-asia-climate-solutions-design-grant/" class="view-button" target="_blank">View Details</a>
+                                <a href="https://www.convergence.finance/design-funding" class="secondary-button" target="_blank">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grant 3: Private Sector for Food Systems -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Partnership Grant</span>
+                            <span class="status-tag status-closed">Closed (Similar Calls Expected)</span>
+                            <h3>Private Sector for Food Systems (PS4FS)</h3>
+                            <p>International Fund for Agricultural Development (IFAD)</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>South & Southeast Asia (6 countries)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Status:</span>
+                                    <span>Closed August 2024 (similar calls expected)</span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>A competitive grant aimed at partnering with the private sector to benefit smallholder farmers. Funds projects to stimulate investments in inclusive, climate-resilient value chains across six target countries (Cambodia, India, Laos, Philippines, Sri Lanka, Vietnam). Multi-year funding in the range of USD $3-5 million.</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Sustainable Agriculture</span>
+                                    <span class="focus-tag">Climate Adaptation</span>
+                                    <span class="focus-tag">Value Chains</span>
+                                    <span class="focus-tag">Smallholder Support</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://www.ifad.org/en/web/latest/-/call-for-proposals-private-sector-for-food-systems" class="view-button" target="_blank">Learn More</a>
+                                <a href="#" class="secondary-button">Similar Opportunities</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grant 4: AgriConnect -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Digital Innovation</span>
+                            <span class="status-tag status-closed">Closed (Periodic Calls)</span>
+                            <h3>AgriConnect: Digital Solutions for Smallholders</h3>
+                            <p>International Fund for Agricultural Development (IFAD)</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>Global (including Asia)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Status:</span>
+                                    <span>Closed August 16, 2024 (periodic calls)</span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>Offering up to US$1.5 million funding for developing a digital platform that improves farmer data, service delivery, and access to finance/markets. Supports innovative projects to connect smallholders with services via digital farmer registries. Co-financing required (at least 25% for private sector, ~20% for others).</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Digital Agriculture</span>
+                                    <span class="focus-tag">Farmer Data</span>
+                                    <span class="focus-tag">Market Access</span>
+                                    <span class="focus-tag">Financial Inclusion</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://www.ifad.org/en/web/latest/-/call-for-proposals-ifad-grant-agri-connect" class="view-button" target="_blank">Learn More</a>
+                                <a href="#" class="secondary-button">Similar Opportunities</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grant 5: GEF Small Grants Programme -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Community Grants</span>
+                            <span class="status-tag status-recurring">Rolling (Ongoing)</span>
+                            <h3>GEF Small Grants Programme (SGP)</h3>
+                            <p>United Nations Development Programme (UNDP)</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>Global (all focus countries eligible)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Cycle:</span>
+                                    <span>Rolling (ongoing)</span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>Provides grants up to USD $50,000 directly to local communities and civil society organizations for projects that "conserve and restore the environment while enhancing people's well-being and livelihoods." Since 1992, SGP has embodied the "think globally, act locally" approach to sustainable development.</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Biodiversity</span>
+                                    <span class="focus-tag">Climate Change</span>
+                                    <span class="focus-tag">Sustainable Land Management</span>
+                                    <span class="focus-tag">Community Action</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://www.adaptation-undp.org/small-grants-programme-sgp" class="view-button" target="_blank">Program Overview</a>
+                                <a href="https://sgp.undp.org/" class="secondary-button" target="_blank">Country Programs</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grant 6: Development Innovation Ventures -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Innovation Fund</span>
+                            <span class="status-tag status-active">Continuous</span>
+                            <h3>Development Innovation Ventures (DIV)</h3>
+                            <p>USAID</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>Global (low and lower-middle income countries)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Cycle:</span>
+                                    <span>Continuous (open year-round)</span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>USAID's open innovation fund backs breakthrough development solutions through a staged finance model. Stage 1 grants offer up to $500,000 for pilots, with larger awards (up to several million) for testing and scaling proven solutions. Open to any entity with evidence-backed innovations in USAID-supported countries.</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Climate-smart Agriculture</span>
+                                    <span class="focus-tag">Innovation</span>
+                                    <span class="focus-tag">Poverty Reduction</span>
+                                    <span class="focus-tag">Evidence-based Solutions</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://www.usaid.gov/div" class="view-button" target="_blank">Program Details</a>
+                                <a href="https://www.usaid.gov/div/apply" class="secondary-button" target="_blank">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grant 7: Global Innovation Fund -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Impact Fund</span>
+                            <span class="status-tag status-recurring">Periodic Windows</span>
+                            <h3>Global Innovation Fund (GIF)</h3>
+                            <p>Multi-donor Impact Fund</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>Global (developing countries)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Cycle:</span>
+                                    <span>Periodic application windows</span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>GIF supports social innovations in developing countries that can improve lives of people living on under $5/day. It offers grants and risk-tolerant capital ranging from pilot funding (~$50k–$250k) to scaling ($1–15 million). Open to NGOs, for-profit companies, researchers with transformative innovations aligned to GIF's criteria.</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Agricultural Technology</span>
+                                    <span class="focus-tag">Climate Adaptation</span>
+                                    <span class="focus-tag">Financial Inclusion</span>
+                                    <span class="focus-tag">Poverty Reduction</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://www.globalinnovation.fund/what-we-fund/" class="view-button" target="_blank">What We Fund</a>
+                                <a href="https://www.globalinnovation.fund/apply/about/" class="secondary-button" target="_blank">Apply for Funding</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grant 8: Ashden Awards -->
+                    <div class="funding-card">
+                        <div class="funding-header">
+                            <span class="funding-type-tag">Awards & Grants</span>
+                            <span class="status-tag status-recurring">Annual</span>
+                            <h3>Ashden Awards</h3>
+                            <p>Ashden</p>
+                        </div>
+                        <div class="funding-content">
+                            <div class="funding-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-globe"></i>
+                                    <span class="meta-label">Region:</span>
+                                    <span>Global (specific categories for Asia/Africa)</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span class="meta-label">Cycle:</span>
+                                    <span>Annual (applications typically open Q4, close Q1)</span>
+                                </div>
+                            </div>
+                            <div class="funding-description">
+                                <p>The Ashden Awards recognize innovative climate solutions, including a dedicated Award for Regenerative Agriculture. Winners receive a cash grant (typically £10,000 or more), international publicity, and business support. Open to enterprises, NGOs, and programs demonstrating impact in sustainable energy, natural climate solutions, and regenerative farming.</p>
+                            </div>
+                            <div class="funding-focus">
+                                <h4 class="focus-title"><i class="fas fa-leaf"></i> Focus Areas</h4>
+                                <div class="focus-tags">
+                                    <span class="focus-tag">Regenerative Agriculture</span>
+                                    <span class="focus-tag">Agroecology</span>
+                                    <span class="focus-tag">Renewable Energy</span>
+                                    <span class="focus-tag">Equitable Solutions</span>
+                                </div>
+                            </div>
+                            <div class="funding-actions">
+                                <a href="https://asiansintech.com/call-for-asian-low-carbon-pioneers-for-two-new-ashden-awards/" class="view-button" target="_blank">Program Overview</a>
+                                <a href="https://www.fundsforngos.org/environment-conservation-climate-change-funds/call-for-applications-2024-ashden-awards/" class="secondary-button" target="_blank">Application Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="view-more">
+                    <a href="#" class="secondary-button">View More Opportunities</a>
+                </div>
+                
+                <div class="newsletter-box">
+                    <h3>Stay Updated on Funding Opportunities</h3>
+                    <p>Subscribe to our monthly funding alert to receive the latest grants, deadlines, and application tips directly in your inbox.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
