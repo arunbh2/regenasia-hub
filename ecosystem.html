@@ -3,220 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecosystem Hub - RegenAsia Hub</title>
+    <title>Market Access - RegenAsia Hub</title>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .ecosystem-intro {
+        .market-intro {
             text-align: center;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto 3rem;
         }
         
-        .stakeholder-grid {
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all var(--transition-quick);
+        }
+        
+        .tab-button.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .tab-button:hover:not(.active) {
+            background-color: var(--medium-gray);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .certification-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
         
-        .stakeholder-card {
+        .certification-card {
             background-color: white;
             border-radius: var(--border-radius-md);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             overflow: hidden;
-            transition: transform var(--transition-standard), box-shadow var(--transition-standard);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         
-        .stakeholder-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .cert-header {
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid var(--light-gray);
         }
         
-        .stakeholder-icon {
-            background-color: var(--primary-blue);
-            color: white;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
+        .cert-logo {
+            max-width: 200px;
+            max-height: 80px;
+            margin: 0 auto 1rem;
         }
         
-        .stakeholder-content {
-            padding: var(--spacing-lg);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .cert-content {
+            padding: 1.5rem;
         }
         
-        .stakeholder-content h3 {
-            margin-bottom: var(--spacing-sm);
-            color: var(--primary-blue);
+        .cert-features {
+            margin: 1rem 0;
         }
         
-        .stakeholder-problems {
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .problem-item {
+        .cert-feature {
             display: flex;
             align-items: flex-start;
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .problem-item i {
-            color: var(--accent-red);
-            margin-right: var(--spacing-sm);
-            margin-top: 0.3rem;
-        }
-        
-        .solutions-heading {
-            font-weight: bold;
-            margin-bottom: var(--spacing-sm);
-            color: var(--primary-green);
-            display: flex;
-            align-items: center;
-        }
-        
-        .solutions-heading i {
-            margin-right: var(--spacing-sm);
-        }
-        
-        .solution-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            margin-top: auto;
-        }
-        
-        .solution-link {
-            display: flex;
-            align-items: center;
-            padding: 0.5rem;
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius-sm);
-            transition: background-color var(--transition-quick);
-        }
-        
-        .solution-link:hover {
-            background-color: var(--medium-gray);
-        }
-        
-        .solution-link i {
-            margin-right: var(--spacing-sm);
-            color: var(--primary-green);
-        }
-        
-        .metrics-section {
-            background-color: var(--primary-blue);
-            color: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .metric-card {
-            background-color: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: var(--border-radius-md);
-        }
-        
-        .metric-number {
-            font-size: 3rem;
-            font-weight: bold;
             margin-bottom: 0.5rem;
         }
         
-        .metric-label {
-            font-size: 1.1rem;
+        .cert-feature i {
+            color: var(--primary-green);
+            margin-right: 0.5rem;
+            margin-top: 0.3rem;
         }
         
-        .ecosystem-map-section {
-            padding: 4rem 0;
+        .cert-actions {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+        
+        .buyer-card {
             background-color: white;
-        }
-        
-        .ecosystem-map {
-            max-width: 1000px;
-            margin: 2rem auto 0;
-            border: 1px solid var(--medium-gray);
-            border-radius: var(--border-radius-md);
-            padding: 1rem;
-        }
-        
-        .platform-benefits {
-            text-align: center;
-            padding: 3rem 0;
-            background-color: var(--light-gray);
-        }
-        
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .benefit-card {
-            background-color: white;
-            padding: 2rem;
             border-radius: var(--border-radius-md);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
         }
         
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: var(--primary-yellow);
+        .buyer-header {
+            display: flex;
+            align-items: center;
             margin-bottom: 1rem;
         }
         
-        .cta-section {
-            background-color: var(--primary-yellow);
-            color: white;
-            text-align: center;
-            padding: 4rem 0;
+        .buyer-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-right: 1rem;
         }
         
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 1.5rem;
+        .buyer-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
         }
         
-        .cta-buttons {
+        .buyer-location {
+            color: #777;
+            font-size: 0.9rem;
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
         }
         
-        .cta-white {
-            background-color: white;
-            color: var(--primary-yellow);
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius-md);
-            font-weight: bold;
-            transition: background-color var(--transition-quick);
+        .buyer-location i {
+            margin-right: 0.5rem;
         }
         
-        .cta-white:hover {
+        .buyer-interests {
+            margin: 1rem 0;
+        }
+        
+        .interest-tag {
+            display: inline-block;
             background-color: var(--light-gray);
-            color: var(--primary-yellow);
+            padding: 0.25rem 0.5rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .buyer-actions {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .premium-example {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-md);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .premium-chart {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .pricing-table th, .pricing-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .pricing-table th {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .pricing-table tr:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+        
+        .premium-amount {
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+        
+        .resource-links {
+            margin-top: 2rem;
+        }
+        
+        .resource-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform var(--transition-quick);
+        }
+        
+        .resource-link:hover {
+            transform: translateY(-3px);
+        }
+        
+        .resource-link i {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-right: 1rem;
+        }
+        
+        .link-content h4 {
+            margin-bottom: 0.25rem;
+        }
+        
+        .link-content p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .success-stories {
+            margin-top: 3rem;
+        }
+        
+        .story-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .story-content {
+            padding: 1.5rem;
+        }
+        
+        .story-meta {
+            display: flex;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .story-meta > div {
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .story-meta i {
+            margin-right: 0.5rem;
+        }
+        
+        .story-results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .result-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-sm);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 0.25rem;
+        }
+        
+        .result-label {
+            font-size: 0.9rem;
         }
     </style>
 </head>
-<body class="ecosystem-page">
+<body class="market-access-page">
     <!-- Header Navigation -->
     <header class="main-header">
         <div class="container">
@@ -232,9 +312,9 @@
                     <li><a href="community.html">Community</a></li>
                     <li><a href="tools-training.html">Tools & Training</a></li>
                     <li><a href="fundraising.html">Fundraising</a></li>
-                    <li class="active"><a href="ecosystem.html">Ecosystem</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="team.html">Our Team</a></li>
+                    <li><a href="ecosystem.html">Ecosystem</a></li>
                 </ul>
             </nav>
             <div class="mobile-menu-toggle">
@@ -246,8 +326,453 @@
     <!-- Page Header -->
     <section class="page-header">
         <div class="container">
-            <h1>Regenerative Agriculture Ecosystem</h1>
-            <p>Connecting stakeholders, resources, and solutions for systemic change</p>
+            <h1>Market Access</h1>
+            <p>Connect regenerative produce with buyers and markets</p>
+        </div>
+    </section>
+
+    <!-- Market Access Introduction -->
+    <section class="market-intro-section">
+        <div class="container">
+            <div class="market-intro">
+                <h2>Connecting Regenerative Products to Markets</h2>
+                <p>Transitioning to regenerative agriculture methods not only benefits the environment and builds climate resilience, but can also open new market opportunities. This resource hub helps farmers and producer organizations understand certification options, connect with buyers interested in regenerative products, and explore premium pricing potential.</p>
+            </div>
+            
+            <div class="tab-navigation">
+                <button class="tab-button active" data-tab="certification">Certification Guides</button>
+                <button class="tab-button" data-tab="buyers">Buyer Directory</button>
+                <button class="tab-button" data-tab="premiums">Price Premiums</button>
+                <button class="tab-button" data-tab="resources">Additional Resources</button>
+            </div>
+            
+            <!-- Certification Guides Tab -->
+            <div class="tab-content active" id="certification">
+                <h2>Certification Options for Regenerative Products</h2>
+                <p>Certification can provide validation of your regenerative practices and help differentiate your products in the marketplace. Below are certification programs relevant to regenerative agriculture in South and Southeast Asia, with guidance on requirements, costs, and benefits.</p>
+                
+                <div class="certification-grid">
+                    <!-- Organic Certification -->
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <img src="assets/images/organic-logo.png" alt="Organic Certification" class="cert-logo">
+                            <h3>Organic Certification</h3>
+                        </div>
+                        <div class="cert-content">
+                            <p>Certifies that products are grown without synthetic fertilizers, pesticides, or GMOs, using methods that promote soil health and ecological balance.</p>
+                            <div class="cert-features">
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Available through multiple certification bodies across Asia</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Strong market recognition and consumer demand</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Established premium pricing in many markets</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Participatory Guarantee Systems (PGS) available as lower-cost options</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <a href="#" class="view-button">Certification Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rainforest Alliance Certification -->
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <img src="assets/images/rainforest-alliance-logo.png" alt="Rainforest Alliance Certification" class="cert-logo">
+                            <h3>Rainforest Alliance</h3>
+                        </div>
+                        <div class="cert-content">
+                            <p>Focuses on sustainable farm management with environmental, social, and economic criteria, including biodiversity conservation and climate resilience.</p>
+                            <div class="cert-features">
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Particularly relevant for coffee, tea, cocoa, and tropical fruits</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Growing recognition in international markets</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Support available for smallholder group certification</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Training modules and resources provided</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <a href="#" class="view-button">Certification Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fair Trade Certification -->
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <img src="assets/images/fair-trade-logo.png" alt="Fair Trade Certification" class="cert-logo">
+                            <h3>Fair Trade</h3>
+                        </div>
+                        <div class="cert-content">
+                            <p>Ensures farmers receive fair prices, work in good conditions, and invest in community development and sustainable farming practices.</p>
+                            <div class="cert-features">
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Guaranteed minimum prices and social premiums</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Strong focus on cooperative/group certification</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Well-established for coffee, tea, spices, and other exports</span>
+                                </div>
+                                <div class="cert-feature">
+                                    <i class="fas fa-check"></i>
+                                    <span>Support for climate adaptation included in standards</span>
+                                </div>
+                            </div>
+                            <div class="cert-actions">
+                                <a href="#" class="view-button">Certification Guide</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="mt-4">Participatory Guarantee Systems (PGS)</h3>
+                <p>For smallholder farmers, Participatory Guarantee Systems offer a more accessible, community-based alternative to third-party certification. These locally-focused quality assurance systems certify producers based on active participation of stakeholders and operate on a foundation of trust, social networks, and knowledge exchange.</p>
+                
+                <div class="resource-links">
+                    <div class="resource-link">
+                        <i class="fas fa-file-pdf"></i>
+                        <div class="link-content">
+                            <h4>PGS Implementation Guide</h4>
+                            <p>Step-by-step guidance for establishing a PGS system in your community</p>
+                        </div>
+                    </div>
+                    <div class="resource-link">
+                        <i class="fas fa-landmark"></i>
+                        <div class="link-content">
+                            <h4>Regional PGS Networks</h4>
+                            <p>Directory of established PGS networks across South and Southeast Asia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Buyer Directory Tab -->
+            <div class="tab-content" id="buyers">
+                <h2>Buyer Directory</h2>
+                <p>Connect with buyers seeking regeneratively grown products from South and Southeast Asia. This directory includes companies committed to supporting sustainable agriculture through their sourcing practices.</p>
+                
+                <div class="certification-grid">
+                    <!-- Buyer 1 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-1.png" alt="Green Harvest Company" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Green Harvest Company</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> Singapore, Thailand, Philippines</p>
+                            </div>
+                        </div>
+                        <p>International food company seeking regeneratively grown rice, coconut products, and tropical fruits for export markets.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Organic Certified</span>
+                            <span class="interest-tag">Rice</span>
+                            <span class="interest-tag">Coconut</span>
+                            <span class="interest-tag">Tropical Fruits</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Buyer 2 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-2.png" alt="Earth Bean Coffee" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Earth Bean Coffee</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> Vietnam, Indonesia, India</p>
+                            </div>
+                        </div>
+                        <p>Specialty coffee roaster and retailer committed to sourcing shade-grown, sustainably produced coffee from smallholder farms across Asia.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Coffee</span>
+                            <span class="interest-tag">Rainforest Alliance</span>
+                            <span class="interest-tag">Agroforestry</span>
+                            <span class="interest-tag">Fair Trade</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Buyer 3 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-3.png" alt="Pure Spice Trading" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Pure Spice Trading</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> India, Sri Lanka, Nepal</p>
+                            </div>
+                        </div>
+                        <p>Spice trader working with regenerative farming communities to source premium organic spices for international markets.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Spices</span>
+                            <span class="interest-tag">Organic</span>
+                            <span class="interest-tag">Fair Trade</span>
+                            <span class="interest-tag">Forest Gardens</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Buyer 4 -->
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <img src="assets/images/buyer-4.png" alt="Local Food Network" class="buyer-logo">
+                            <div>
+                                <h3 class="buyer-name">Local Food Network</h3>
+                                <p class="buyer-location"><i class="fas fa-map-marker-alt"></i> Thailand, Philippines, Malaysia</p>
+                            </div>
+                        </div>
+                        <p>Regional cooperative connecting regenerative farmers with urban consumers through community-supported agriculture and farm-to-table programs.</p>
+                        <div class="buyer-interests">
+                            <span class="interest-tag">Mixed Vegetables</span>
+                            <span class="interest-tag">PGS Certified</span>
+                            <span class="interest-tag">Direct Trade</span>
+                            <span class="interest-tag">Local Markets</span>
+                        </div>
+                        <div class="buyer-actions">
+                            <a href="#" class="view-button">Sourcing Criteria</a>
+                            <a href="#" class="secondary-button">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="view-more">
+                    <a href="#" class="secondary-button">View All Buyers</a>
+                </div>
+                
+                <div class="success-stories">
+                    <h3>Successful Market Connections</h3>
+                    
+                    <div class="story-card">
+                        <div class="story-content">
+                            <h4>Rainforest Alliance Coffee Premium in Vietnam</h4>
+                            <div class="story-meta">
+                                <div><i class="fas fa-map-marker-alt"></i> Central Highlands, Vietnam</div>
+                                <div><i class="fas fa-seedling"></i> Coffee Agroforestry</div>
+                            </div>
+                            <p>Vietnamese coffee farmer Trinh Vinh became one of the first Rainforest Alliance-certified growers in his region, implementing agroforestry practices with shade trees and cover crops. His regenerative approach not only improved soil health but opened access to specialty coffee markets.</p>
+                            <div class="story-results">
+                                <div class="result-item">
+                                    <div class="result-value">25%</div>
+                                    <div class="result-label">Cost Reduction</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-value">35%</div>
+                                    <div class="result-label">Profit Increase</div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-value">15%</div>
+                                    <div class="result-label">Price Premium</div>
+                                </div>
+                            </div>
+                            <a href="#" class="read-more">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Price Premiums Tab -->
+            <div class="tab-content" id="premiums">
+                <h2>Price Premiums for Regenerative Products</h2>
+                <p>Regenerative agriculture practices can lead to price premiums in the market due to improved product quality, certification credentials, and growing consumer demand for sustainable products. This section provides data on potential premiums across different crops and markets.</p>
+                
+                <div class="premium-example">
+                    <h3>Average Premium by Certification Type</h3>
+                    <p>Based on market data collected across South and Southeast Asia, the following chart shows average price premiums farmers can expect for certified regenerative products compared to conventional alternatives.</p>
+                    
+                    <div class="premium-chart">
+                        <table class="pricing-table">
+                            <thead>
+                                <tr>
+                                    <th>Certification Type</th>
+                                    <th>Crop Categories</th>
+                                    <th>Average Premium</th>
+                                    <th>Market Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Organic</td>
+                                    <td>Rice, Vegetables, Fruits</td>
+                                    <td class="premium-amount">20-30%</td>
+                                    <td>Higher in export and urban markets</td>
+                                </tr>
+                                <tr>
+                                    <td>Rainforest Alliance</td>
+                                    <td>Coffee, Tea, Cocoa</td>
+                                    <td class="premium-amount">15-25%</td>
+                                    <td>Strong demand in specialty markets</td>
+                                </tr>
+                                <tr>
+                                    <td>Fair Trade</td>
+                                    <td>Coffee, Spices, Handicrafts</td>
+                                    <td class="premium-amount">10-20%</td>
+                                    <td>Plus social premium for community projects</td>
+                                </tr>
+                                <tr>
+                                    <td>PGS (Participatory Guarantee)</td>
+                                    <td>Mixed Vegetables, Local Crops</td>
+                                    <td class="premium-amount">10-15%</td>
+                                    <td>Growing recognition in local markets</td>
+                                </tr>
+                                <tr>
+                                    <td>Direct Trade Relationships</td>
+                                    <td>Various</td>
+                                    <td class="premium-amount">25-40%</td>
+                                    <td>Based on quality and story-based marketing</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <h3 class="mt-4">Factors Affecting Price Premiums</h3>
+                <p>Several factors influence the premium you may receive for regeneratively grown products:</p>
+                
+                <div class="certification-grid">
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-award" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Product Quality</h3>
+                        </div>
+                        <p>Regenerative practices often result in improved taste, nutritional value, and shelf life, which can command higher prices regardless of certification status.</p>
+                    </div>
+                    
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-certificate" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Certification Type</h3>
+                        </div>
+                        <p>Different certifications carry different levels of recognition and value in various markets. Multiple certifications can sometimes compound premiums.</p>
+                    </div>
+                    
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-globe" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Market Access</h3>
+                        </div>
+                        <p>Direct access to consumers or specialty buyers typically yields higher premiums than selling through conventional supply chains or intermediaries.</p>
+                    </div>
+                    
+                    <div class="buyer-card">
+                        <div class="buyer-header">
+                            <i class="fas fa-microphone" style="font-size: 2rem; color: var(--primary-yellow); margin-right: 1rem;"></i>
+                            <h3 class="buyer-name">Story & Transparency</h3>
+                        </div>
+                        <p>Products with compelling stories about regenerative practices, farmer welfare, and environmental impact often command higher prices from conscious consumers.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Resources Tab -->
+            <div class="tab-content" id="resources">
+                <h2>Additional Market Access Resources</h2>
+                <p>Explore these additional tools and resources to help you navigate markets for regeneratively grown products.</p>
+                
+                <div class="resource-links">
+                    <div class="resource-link">
+                        <i class="fas fa-calculator"></i>
+                        <div class="link-content">
+                            <h4>Certification Cost Calculator</h4>
+                            <p>Estimate certification costs for different schemes based on your farm size and crop type</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-file-contract"></i>
+                        <div class="link-content">
+                            <h4>Sample Contracts & Agreements</h4>
+                            <p>Templates for farmer-buyer agreements with fair terms for regenerative products</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-users"></i>
+                        <div class="link-content">
+                            <h4>Farmer Group Formation Guide</h4>
+                            <p>Step-by-step guidance for forming producer groups to access markets collectively</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-box"></i>
+                        <div class="link-content">
+                            <h4>Post-Harvest Handling Guidelines</h4>
+                            <p>Best practices for maintaining quality and value of regenerative products</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="link-content">
+                            <h4>Digital Market Platforms</h4>
+                            <p>Directory of apps and online platforms connecting farmers to markets</p>
+                        </div>
+                    </div>
+                    
+                    <div class="resource-link">
+                        <i class="fas fa-comments"></i>
+                        <div class="link-content">
+                            <h4>Market Access Discussion Forum</h4>
+                            <p>Join our community discussion on market challenges and opportunities</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-stories">
+                    <h3>Market Innovation Stories</h3>
+                    
+                    <div class="story-card">
+                        <div class="story-content">
+                            <h4>Farmer Producer Organization in Andhra Pradesh</h4>
+                            <div class="story-meta">
+                                <div><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</div>
+                                <div><i class="fas fa-seedling"></i> Natural Farming</div>
+                            </div>
+                            <p>In India's Andhra Pradesh, Farmer Producer Organizations formed by natural farming groups have created direct market linkages to health-conscious urban consumers. By collectively processing, packaging, and marketing their chemical-free products, these farmers have significantly increased their income while building a trusted brand for naturally grown food.</p>
+                            <a href="#" class="read-more">Read Full Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Need Help Accessing Markets?</h2>
+            <p>Connect with our network of market access specialists for personalized guidance</p>
+            <a href="community.html" class="cta-button">Contact a Market Specialist</a>
         </div>
     </section>
 
@@ -297,337 +822,27 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
-    <!-- Ecosystem Introduction -->
-    <section class="ecosystem-intro-section">
-        <div class="container">
-            <div class="ecosystem-intro">
-                <h2>RegenAsia Hub: An Ecosystem Orchestrator</h2>
-                <p>We bring together diverse stakeholders across South and Southeast Asia to address the unique challenges each group faces in advancing regenerative agriculture. Our platform serves as a central connector, creating an enabling environment where knowledge flows, partnerships form, and resources mobilize efficiently.</p>
-                <p>Explore the specific solutions we offer for each stakeholder group below, and discover how you can both contribute to and benefit from this growing ecosystem.</p>
-            </div>
-            
-            <div class="stakeholder-grid">
-                <!-- Farmers Card -->
-                <div class="stakeholder-card">
-                    <div class="stakeholder-icon">
-                        <i class="fas fa-tractor"></i>
-                    </div>
-                
-                <!-- Private Sector Card -->
-                <div class="stakeholder-card">
-                    <div class="stakeholder-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <div class="stakeholder-content">
-                        <h3>Private Sector</h3>
-                        <div class="stakeholder-problems">
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Uncertainty in how to implement regenerative sourcing</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Perceived risk in engaging smallholder suppliers</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Verification challenges for sustainability claims</span>
-                            </div>
-                        </div>
-                        <div class="solutions-heading">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Our Solutions</span>
-                        </div>
-                        <div class="solution-links">
-                            <a href="corporate-transition.html" class="solution-link">
-                                <i class="fas fa-exchange-alt"></i>
-                                <span>Corporate Transition Playbooks</span>
-                            </a>
-                            <a href="corporate-showcase.html" class="solution-link">
-                                <i class="fas fa-award"></i>
-                                <span>Corporate Showcase</span>
-                            </a>
-                            <a href="organization-profiles.html" class="solution-link">
-                                <i class="fas fa-handshake"></i>
-                                <span>Partner Matching</span>
-                            </a>
-                            <a href="impact-measurement.html" class="solution-link">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Impact Verification Tools</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Research Institutions Card -->
-                <div class="stakeholder-card">
-                    <div class="stakeholder-icon">
-                        <i class="fas fa-microscope"></i>
-                    </div>
-                    <div class="stakeholder-content">
-                        <h3>Research Institutions</h3>
-                        <div class="stakeholder-problems">
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Research often inaccessible to practitioners</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Difficulty finding field partners for studies</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Limited funding for long-term regenerative trials</span>
-                            </div>
-                        </div>
-                        <div class="solutions-heading">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Our Solutions</span>
-                        </div>
-                        <div class="solution-links">
-                            <a href="actionable-research.html" class="solution-link">
-                                <i class="fas fa-lightbulb"></i>
-                                <span>Actionable Research Briefs</span>
-                            </a>
-                            <a href="research-collaboration.html" class="solution-link">
-                                <i class="fas fa-flask"></i>
-                                <span>Research Collaboration Board</span>
-                            </a>
-                            <a href="funding-opportunities.html" class="solution-link">
-                                <i class="fas fa-hand-holding-usd"></i>
-                                <span>Research Grant Opportunities</span>
-                            </a>
-                            <a href="community.html" class="solution-link">
-                                <i class="fas fa-comments"></i>
-                                <span>Multi-stakeholder Feedback</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                    <div class="stakeholder-content">
-                        <h3>Farmers & Communities</h3>
-                        <div class="stakeholder-problems">
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Limited access to practical knowledge on regenerative practices</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Resource constraints and perceived risks in transitioning</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Market uncertainty for regeneratively grown products</span>
-                            </div>
-                        </div>
-                        <div class="solutions-heading">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Our Solutions</span>
-                        </div>
-                        <div class="solution-links">
-                            <a href="knowledge.html" class="solution-link">
-                                <i class="fas fa-book"></i>
-                                <span>Practical Knowledge Repository</span>
-                            </a>
-                            <a href="market-access.html" class="solution-link">
-                                <i class="fas fa-store"></i>
-                                <span>Market Access Guides</span>
-                            </a>
-                            <a href="community.html" class="solution-link">
-                                <i class="fas fa-users"></i>
-                                <span>Peer Learning Forums</span>
-                            </a>
-                            <a href="resource-finder.html" class="solution-link">
-                                <i class="fas fa-search-dollar"></i>
-                                <span>Resource Finder</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- NGOs Card -->
-                <div class="stakeholder-card">
-                    <div class="stakeholder-icon">
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <div class="stakeholder-content">
-                        <h3>NGOs & Civil Society</h3>
-                        <div class="stakeholder-problems">
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Fragmented resources across multiple sources</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Limited networking opportunities beyond local areas</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Challenges in scaling successful pilot projects</span>
-                            </div>
-                        </div>
-                        <div class="solutions-heading">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Our Solutions</span>
-                        </div>
-                        <div class="solution-links">
-                            <a href="organization-profiles.html" class="solution-link">
-                                <i class="fas fa-building"></i>
-                                <span>Organization Profiles</span>
-                            </a>
-                            <a href="funding-opportunities.html" class="solution-link">
-                                <i class="fas fa-hand-holding-usd"></i>
-                                <span>Funding Opportunities</span>
-                            </a>
-                            <a href="knowledge.html" class="solution-link">
-                                <i class="fas fa-book"></i>
-                                <span>Aggregated Best Practices</span>
-                            </a>
-                            <a href="community.html" class="solution-link">
-                                <i class="fas fa-users"></i>
-                                <span>Partnership Matchmaking</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Experts Card -->
-                <div class="stakeholder-card">
-                    <div class="stakeholder-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <div class="stakeholder-content">
-                        <h3>Independent Professionals</h3>
-                        <div class="stakeholder-problems">
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Limited visibility to potential employers/partners</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Difficulty staying current with latest research/tools</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Unclear pathways to project opportunities</span>
-                            </div>
-                        </div>
-                        <div class="solutions-heading">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Our Solutions</span>
-                        </div>
-                        <div class="solution-links">
-                            <a href="community.html#experts" class="solution-link">
-                                <i class="fas fa-id-badge"></i>
-                                <span>Expert Directory</span>
-                            </a>
-                            <a href="jobs-opportunities.html" class="solution-link">
-                                <i class="fas fa-briefcase"></i>
-                                <span>Jobs & Opportunities Board</span>
-                            </a>
-                            <a href="webinars.html" class="solution-link">
-                                <i class="fas fa-video"></i>
-                                <span>Expert-Led Webinars</span>
-                            </a>
-                            <a href="community.html" class="solution-link">
-                                <i class="fas fa-comments"></i>
-                                <span>Professional Forum</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Donors Card -->
-                <div class="stakeholder-card">
-                    <div class="stakeholder-icon">
-                        <i class="fas fa-donate"></i>
-                    </div>
-                    <div class="stakeholder-content">
-                        <h3>Donors & Impact Investors</h3>
-                        <div class="stakeholder-problems">
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Difficulty identifying credible, impactful projects</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Limited due diligence resources for project vetting</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Challenges in measuring and demonstrating impact</span>
-                            </div>
-                        </div>
-                        <div class="solutions-heading">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Our Solutions</span>
-                        </div>
-                        <div class="solution-links">
-                            <a href="fundraising.html" class="solution-link">
-                                <i class="fas fa-project-diagram"></i>
-                                <span>Verified Project Showcase</span>
-                            </a>
-                            <a href="impact-measurement.html" class="solution-link">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Impact Measurement Toolkit</span>
-                            </a>
-                            <a href="organization-profiles.html" class="solution-link">
-                                <i class="fas fa-building"></i>
-                                <span>Due Diligence Support</span>
-                            </a>
-                            <a href="community.html" class="solution-link">
-                                <i class="fas fa-users"></i>
-                                <span>Direct Practitioner Engagement</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Government Card -->
-                <div class="stakeholder-card">
-                    <div class="stakeholder-icon">
-                        <i class="fas fa-landmark"></i>
-                    </div>
-                    <div class="stakeholder-content">
-                        <h3>Government Agencies</h3>
-                        <div class="stakeholder-problems">
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Limited access to consolidated research for policy</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Difficulty coordinating multi-stakeholder efforts</span>
-                            </div>
-                            <div class="problem-item">
-                                <i class="fas fa-exclamation-circle"></i>
-                                <span>Complex funding and implementation coordination</span>
-                            </div>
-                        </div>
-                        <div class="solutions-heading">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Our Solutions</span>
-                        </div>
-                        <div class="solution-links">
-                            <a href="policy-hub.html" class="solution-link">
-                                <i class="fas fa-gavel"></i>
-                                <span>Policy Hub</span>
-                            </a>
-                            <a href="regional-initiatives.html" class="solution-link">
-                                <i class="fas fa-map-marked-alt"></i>
-                                <span>Regional Initiatives Map</span>
-                            </a>
-                            <a href="knowledge.html" class="solution-link">
-                                <i class="fas fa-book"></i>
-                                <span>Knowledge Repository</span>
-                            </a>
-                            <a href="tools-training.html" class="solution-link">
-                                <i class="fas fa-tools"></i>
-                                <span>Extension Officer Training</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
