@@ -1,15 +1,564 @@
 <!DOCTYPE html>
 <html lang="en">
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Hub - RegenAsia Hub</title>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Connect with practitioners, experts, and change-makers in regenerative agriculture across South and Southeast Asia.">
+    <meta name="keywords" content="regenerative agriculture, community, forums, experts, events, Southeast Asia, South Asia">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/nav-styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <style>
+        .community-intro {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .intro-content.full-width {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .intro-content.full-width h2 {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .intro-content.full-width p {
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            text-align: center;
+        }
+        
+        .intro-content.full-width .cta-button {
+            display: inline-block;
+            min-width: 180px;
+        }
+        
+        /* Forums Section Styles */
+        .forums-section {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .forum-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .new-topic-button {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .new-topic-button i {
+            margin-right: 0.5rem;
+        }
+        
+        .new-topic-button:hover {
+            background-color: #27ae60;
+        }
+        
+        .forum-search {
+            display: flex;
+            max-width: 300px;
+        }
+        
+        .forum-search input {
+            flex-grow: 1;
+            padding: 0.6rem;
+            border: 1px solid var(--medium-gray);
+            border-right: none;
+            border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+        }
+        
+        .forum-search button {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+            cursor: pointer;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .forum-search button:hover {
+            background-color: #1689d6;
+        }
+        
+        .forum-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .forum-nav {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+        }
+        
+        .forum-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem;
+        }
+        
+        .forum-nav-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .forum-nav-list li a {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            border-radius: var(--border-radius-sm);
+            transition: background-color var(--transition-quick);
+        }
+        
+        .forum-nav-list li a:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .forum-nav-list li.active a {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .forum-nav-list li a i {
+            margin-right: 0.5rem;
+        }
+        
+        .forum-categories h3, .forum-tags h3 {
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem;
+        }
+        
+        .forum-categories ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .forum-categories ul li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .forum-categories ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 0.3rem 0;
+        }
+        
+        .forum-categories ul li a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .category-color {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            background-color: white;
+            color: var(--text-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color var(--transition-quick);
+            border: 1px solid var(--medium-gray);
+        }
+        
+        .tag:hover {
+            background-color: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .forum-content {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+        }
+        
+        .forum-topics {
+            margin-bottom: 1.5rem;
+        }
+        
+        .forum-topic {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .forum-topic:last-child {
+            border-bottom: none;
+        }
+        
+        .topic-category {
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .topic-content h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .topic-content h3 a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color var(--transition-quick);
+        }
+        
+        .topic-content h3 a:hover {
+            color: var(--primary-blue);
+        }
+        
+        .topic-excerpt {
+            margin: 0 0 0.5rem;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        .topic-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .topic-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 0.3rem;
+            object-fit: cover;
+        }
+        
+        .topic-stats {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .topic-stats span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .topic-stats span i {
+            margin-right: 0.3rem;
+        }
+        
+        .forum-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .page-current, .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .page-current {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .page-link {
+            background-color: white;
+            color: var(--text-color);
+            text-decoration: none;
+            border: 1px solid var(--medium-gray);
+            transition: background-color var(--transition-quick);
+        }
+        
+        .page-link:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .page-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+        }
+        
+        /* Expert Network Styles */
+        .expert-network {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .expert-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .expert-card {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .expert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .expert-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 1.5rem auto 1rem;
+            border: 3px solid white;
+        }
+        
+        .expert-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .expert-card h3 {
+            text-align: center;
+            margin: 0 0 0.3rem;
+            padding: 0 1.5rem;
+        }
+        
+        .expert-title, .expert-location {
+            text-align: center;
+            color: #555;
+            margin: 0 0 0.5rem;
+            padding: 0 1.5rem;
+        }
+        
+        .expert-location {
+            font-size: 0.9rem;
+        }
+        
+        .expert-location i {
+            color: var(--primary-blue);
+            margin-right: 0.3rem;
+        }
+        
+        .expert-bio {
+            text-align: center;
+            padding: 0 1.5rem;
+            margin: 0 0 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .expert-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .specialty {
+            background-color: rgba(27, 156, 252, 0.1);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.6rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.9rem;
+        }
+        
+        .expert-connect {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: auto;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .expert-connect:hover {
+            background-color: #1689d6;
+        }
+        
+        /* Events Section Styles */
+        .events-section {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .event-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .event-card {
+            background-color: white;
+            border-radius: var(--border-radius-md);
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform var(--transition-standard), box-shadow var(--transition-standard);
+        }
+        
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .event-date {
+            background-color: var(--primary-blue);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius-md);
+            min-height: 80px;
+        }
+        
+        .date-day {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .date-month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .event-content h3 {
+            margin: 0 0 0.5rem;
+        }
+        
+        .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin: 0 0 0.8rem;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .event-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .event-meta span i {
+            margin-right: 0.3rem;
+            color: var(--primary-blue);
+        }
+        
+        .event-excerpt {
+            margin: 0 0 1rem;
+        }
+        
+        .register-button {
+            display: inline-block;
+            background-color: var(--primary-yellow);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .register-button:hover {
+            background-color: var(--primary-yellow-dark);
+        }
+        
+        .view-more {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .secondary-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-blue);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--primary-blue);
+            transition: background-color var(--transition-quick), color var(--transition-quick);
+        }
+        
+        .secondary-button:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+    </style>
 </head>
 <body class="community-page">
     <!-- Header Navigation -->
@@ -79,9 +628,9 @@
                                 <div class="dropdown-column">
                                     <h4><i class="fas fa-handshake"></i> Connect & Support</h4>
                                     <ul>
-                                        <li><a href="farmers-path.html"><i class="fas fa-store"></i> Market Access</a></li>
+                                        <li><a href="market-access.html"><i class="fas fa-store"></i> Market Access</a></li>
                                         <li><a href="jobs-opportunities.html"><i class="fas fa-briefcase"></i> Job Opportunities</a></li>
-                                        <li><a href="fundraising.html"><i class="fas fa-project-diagram"></i> Project Showcase</a></li>
+                                        <li><a href="events.html"><i class="fas fa-calendar-alt"></i> Events & Webinars</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -113,7 +662,7 @@
                                     <ul>
                                         <li><a href="funding-opportunities.html#resources"><i class="fas fa-pencil-alt"></i> Proposal Resources</a></li>
                                         <li><a href="funding-opportunities.html#research"><i class="fas fa-flask"></i> Research Funding</a></li>
-                                        <li><a href="fundraising.html"><i class="fas fa-hand-holding-heart"></i> Support Projects</a></li>
+                                        <li><a href="fundraising.html"><i class="fas fa-project-diagram"></i> Project Showcase</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -136,15 +685,15 @@
                                     <ul>
                                         <li><a href="about.html"><i class="fas fa-bullseye"></i> Mission & Vision</a></li>
                                         <li><a href="team.html"><i class="fas fa-users"></i> Our Team</a></li>
-                                        <li><a href="about.html#partner-organizations"><i class="fas fa-handshake"></i> Partners</a></li>
+                                        <li><a href="partners.html"><i class="fas fa-handshake"></i> Partners</a></li>
                                     </ul>
                                 </div>
                                 <div class="dropdown-column">
                                     <h4><i class="fas fa-envelope"></i> Get in Touch</h4>
                                     <ul>
-                                        <li><a href="about.html#contact"><i class="fas fa-paper-plane"></i> Contact Us</a></li>
-                                        <li><a href="community.html"><i class="fas fa-comments"></i> Join Community</a></li>
-                                        <li><a href="about.html"><i class="fas fa-question-circle"></i> FAQs</a></li>
+                                        <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Contact Us</a></li>
+                                        <li><a href="newsletter.html"><i class="fas fa-newspaper"></i> Newsletter</a></li>
+                                        <li><a href="faq.html"><i class="fas fa-question-circle"></i> FAQs</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -175,40 +724,310 @@
             <p>Connect with practitioners, experts, and change-makers in regenerative agriculture</p>
         </div>
     </section>
+
+    <!-- Events Section -->
+    <section class="events-section" id="events">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Events & Webinars</h2>
+                <p>Join virtual and in-person learning opportunities</p>
+            </div>
+            <div class="event-cards">
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="date-day">15</span>
+                        <span class="date-month">Apr</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Webinar: Soil Health Assessment for Smallholders</h3>
+                        <p class="event-meta">
+                            <span><i class="fas fa-clock"></i> 10:00 AM - 11:30 AM (GMT+7)</span>
+                            <span><i class="fas fa-video"></i> Online</span>
+                        </p>
+                        <p class="event-excerpt">Learn practical, low-cost methods to assess and monitor soil health on small farms.</p>
+                        <a href="#" class="register-button">Register Now</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="date-day">22</span>
+                        <span class="date-month">Apr</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Workshop: Agroforestry Design Principles</h3>
+                        <p class="event-meta">
+                            <span><i class="fas fa-clock"></i> 9:00 AM - 4:00 PM (GMT+5:30)</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Kerala Agricultural University, India</span>
+                        </p>
+                        <p class="event-excerpt">Hands-on workshop on designing multi-story agroforestry systems for different contexts.</p>
+                        <a href="#" class="register-button">Register Now</a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-date">
+                        <span class="date-day">5</span>
+                        <span class="date-month">May</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>Panel Discussion: Funding Regenerative Agriculture Projects</h3>
+                        <p class="event-meta">
+                            <span><i class="fas fa-clock"></i> 3:00 PM - 4:30 PM (GMT+8)</span>
+                            <span><i class="fas fa-video"></i> Online</span>
+                        </p>
+                        <p class="event-excerpt">Expert panel on navigating funding opportunities for regenerative agriculture initiatives.</p>
+                        <a href="#" class="register-button">Register Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="view-more">
+                <a href="#" class="secondary-button">View All Events</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Community Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Community Voices</h2>
+                <p>Hear from members who are part of our regenerative agriculture community</p>
+            </div>
+            <div class="testimonials-carousel">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <p>"Being part of the RegenAsia community has transformed my farming practice. Through the forums, I connected with experts who helped me implement agroforestry practices that have improved my soil health dramatically. The knowledge exchange is invaluable."</p>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-1.jpg" alt="Farmer Testimonial" class="testimonial-avatar">
+                            <div class="author-info">
+                                <h4>Sanjay Patel</h4>
+                                <p>Smallholder Farmer, Gujarat, India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"As an NGO working in rural Thailand, we've been able to connect with funding partners through RegenAsia Hub that aligned perfectly with our mission. The platform's network has helped us scale our watershed management project to 12 villages in just one year."</p>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-2.jpg" alt="NGO Testimonial" class="testimonial-avatar">
+                            <div class="author-info">
+                                <h4>Sunisa Thongprasert</h4>
+                                <p>Program Director, Sustainable Watersheds Foundation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The expert network and research collaborations I've found through RegenAsia have accelerated my work on soil carbon measurement techniques. What would have taken years to develop alone has been achieved in months thanks to this community."</p>
+                        <div class="testimonial-author">
+                            <img src="assets/images/testimonial-3.jpg" alt="Researcher Testimonial" class="testimonial-avatar">
+                            <div class="author-info">
+                                <h4>Dr. Arjun Nair</h4>
+                                <p>Soil Scientist, University of Kerala</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-nav">
+                <span class="nav-dot active" data-slide="0"></span>
+                <span class="nav-dot" data-slide="1"></span>
+                <span class="nav-dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
     
     <style>
-        .community-intro {
-            padding: 2rem 0;
+        /* Testimonials Section Styles */
+        .testimonials-section {
+            padding: 4rem 0;
             background-color: white;
         }
         
-        .intro-content.full-width {
-            width: 100%;
-            text-align: center;
+        .testimonials-carousel {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            position: relative;
+        }
+        
+        .testimonial {
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+        }
+        
+        .testimonial-content {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-md);
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: var(--light-gray) transparent;
+        }
+        
+        .testimonial-content p {
+            font-style: italic;
+            margin: 0 0 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            margin-top: 1.5rem;
+            padding-left: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        
+        .author-info h4 {
+            margin: 0 0 0.2rem;
+        }
+        
+        .author-info p {
+            margin: 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .carousel-nav {
+            display: flex;
             justify-content: center;
+            margin-top: 1.5rem;
+            gap: 0.5rem;
         }
         
-        .intro-content.full-width h2 {
-            margin-bottom: 0.5rem;
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--medium-gray);
+            cursor: pointer;
+            transition: background-color var(--transition-quick);
         }
         
-        .intro-content.full-width p {
-            margin-bottom: 1.5rem;
-            max-width: 700px;
+        .nav-dot.active {
+            background-color: var(--primary-blue);
+        }
+        
+        /* Join CTA Styles */
+        .join-cta {
+            padding: 4rem 0;
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .cta-content {
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .intro-content.full-width .cta-button {
+        .cta-content h2 {
+            margin: 0 0 1rem;
+            font-size: 2rem;
+        }
+        
+        .cta-content p {
+            margin: 0 0 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .feature i {
+            margin-right: 0.5rem;
+            color: var(--primary-yellow);
+        }
+        
+        .join-cta .cta-button {
+            background-color: var(--primary-yellow);
+            color: white;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 500;
             display: inline-block;
-            min-width: 180px;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .join-cta .cta-button:hover {
+            background-color: var(--primary-yellow-dark);
+            transform: translateY(-2px);
         }
     </style>
 
+    <!-- Join CTA -->
+    <section class="join-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Connect with the Regenerative Agriculture Community?</h2>
+                <p>Join our growing network of farmers, researchers, NGOs, and experts across South and Southeast Asia.</p>
+                <div class="cta-features">
+                    <div class="feature">
+                        <i class="fas fa-comments"></i>
+                        <span>Participate in forums</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-handshake"></i>
+                        <span>Connect with experts</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attend events</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share your knowledge</span>
+                    </div>
+                </div>
+                <a href="#" class="cta-button">Join the Community</a>
+            </div>
+        </div>
+    </section>
+
+
     <!-- Community Intro and CTA -->
-    <section class="community-intro">
+    <section class="community-intro" id="join">
         <div class="container">
             <div class="intro-content full-width">
                 <h2>Join Our Growing Community</h2>
@@ -227,8 +1046,8 @@
                 <div class="forum-actions">
                     <a href="#" class="new-topic-button"><i class="fas fa-plus"></i> New Topic</a>
                     <div class="forum-search">
-                        <input type="text" placeholder="Search forums...">
-                        <button><i class="fas fa-search"></i></button>
+                        <input type="text" placeholder="Search forums..." aria-label="Search forums">
+                        <button aria-label="Search"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </div>
@@ -273,90 +1092,6 @@
                 <!-- Forum Content -->
                 <div class="forum-content">
                     <div class="forum-topics">
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #2ECC71;">General</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Welcome to the RegenAsia Community Hub!</a></h3>
-                                <p class="topic-excerpt">Please introduce yourself and share your interest in regenerative agriculture.</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-1.jpg" alt="Admin" class="avatar">
-                                        <span>Admin</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 24 replies</span>
-                                        <span><i class="fas fa-eye"></i> 178 views</span>
-                                    </span>
-                                    <span class="topic-date">2 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #1B9CFC;">Technical</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Best cover crops for rice fields in monsoon regions?</a></h3>
-                                <p class="topic-excerpt">I'm looking for advice on suitable cover crops that can thrive between rice seasons in high rainfall areas.</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-2.jpg" alt="RiceFarmer" class="avatar">
-                                        <span>RiceFarmer</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 12 replies</span>
-                                        <span><i class="fas fa-eye"></i> 85 views</span>
-                                    </span>
-                                    <span class="topic-date">3 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #FFA600;">Funding</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Grant opportunity for regenerative agriculture projects in Southeast Asia</a></h3>
-                                <p class="topic-excerpt">New funding available for community-based initiatives. Application deadline approaching!</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-3.jpg" alt="GrantAdvisor" class="avatar">
-                                        <span>GrantAdvisor</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 8 replies</span>
-                                        <span><i class="fas fa-eye"></i> 112 views</span>
-                                    </span>
-                                    <span class="topic-date">1 week ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #ED6A82;">Events</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Upcoming Webinar: Soil Health Assessment Techniques for Smallholders</a></h3>
-                                <p class="topic-excerpt">Join us for a hands-on virtual workshop on simple soil testing methods for small-scale farmers.</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-4.jpg" alt="SoilExpert" class="avatar">
-                                        <span>SoilExpert</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 5 replies</span>
-                                        <span><i class="fas fa-eye"></i> 67 views</span>
-                                    </span>
-                                    <span class="topic-date">2 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
                         <div class="forum-topic">
                             <div class="topic-category">
                                 <span class="category-badge" style="background-color: #8E44AD;">Research</span>
@@ -453,114 +1188,88 @@
                 <a href="#" class="secondary-button">View More Experts</a>
             </div>
         </div>
-    </section>
-
-    <!-- Events Section -->
-    <section class="events-section" id="events">
-        <div class="container">
-            <div class="section-header">
-                <h2>Upcoming Events & Webinars</h2>
-                <p>Join virtual and in-person learning opportunities</p>
-            </div>
-            <div class="event-cards">
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="date-day">15</span>
-                        <span class="date-month">Apr</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Webinar: Soil Health Assessment for Smallholders</h3>
-                        <p class="event-meta">
-                            <span><i class="fas fa-clock"></i> 10:00 AM - 11:30 AM (GMT+7)</span>
-                            <span><i class="fas fa-video"></i> Online</span>
-                        </p>
-                        <p class="event-excerpt">Learn practical, low-cost methods to assess and monitor soil health on small farms.</p>
-                        <a href="#" class="register-button">Register Now</a>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="date-day">22</span>
-                        <span class="date-month">Apr</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Workshop: Agroforestry Design Principles</h3>
-                        <p class="event-meta">
-                            <span><i class="fas fa-clock"></i> 9:00 AM - 4:00 PM (GMT+5:30)</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Kerala Agricultural University, India</span>
-                        </p>
-                        <p class="event-excerpt">Hands-on workshop on designing multi-story agroforestry systems for different contexts.</p>
-                        <a href="#" class="register-button">Register Now</a>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="date-day">5</span>
-                        <span class="date-month">May</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Panel Discussion: Funding Regenerative Agriculture Projects</h3>
-                        <p class="event-meta">
-                            <span><i class="fas fa-clock"></i> 3:00 PM - 4:30 PM (GMT+8)</span>
-                            <span><i class="fas fa-video"></i> Online</span>
-                        </p>
-                        <p class="event-excerpt">Expert panel on navigating funding opportunities for regenerative agriculture initiatives.</p>
-                        <a href="#" class="register-button">Register Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="view-more">
-                <a href="#" class="secondary-button">View All Events</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>RegenAsia Hub</h3>
-                    <p>A central platform for regenerative agriculture knowledge, community, tools, and fundraising in South and Southeast Asia.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="knowledge.html">Knowledge</a></li>
-                        <li><a href="community.html">Community</a></li>
-                        <li><a href="tools-training.html">Tools & Training</a></li>
-                        <li><a href="fundraising.html">Fundraising</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Connect With Us</h4>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Subscribe to Our Newsletter</h4>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email Address">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 RegenAsia Hub. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="assets/js/main.js"></script>
-</body>
-</html>
+    </section>background-color: #ED6A82;">Events</span>
+                            </div>
+                            <div class="topic-content">
+                                <h3><a href="#">Upcoming Webinar: Soil Health Assessment Techniques for Smallholders</a></h3>
+                                <p class="topic-excerpt">Join us for a hands-on virtual workshop on simple soil testing methods for small-scale farmers.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-author">
+                                        <img src="assets/images/avatar-4.jpg" alt="SoilExpert" class="avatar">
+                                        <span>SoilExpert</span>
+                                    </span>
+                                    <span class="topic-stats">
+                                        <span><i class="fas fa-reply"></i> 5 replies</span>
+                                        <span><i class="fas fa-eye"></i> 67 views</span>
+                                    </span>
+                                    <span class="topic-date">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="forum-topic">
+                            <div class="topic-category">
+                                <span class="category-badge" style="background-color: #1B9CFC;">Technical</span>
+                            </div>
+                            <div class="topic-content">
+                                <h3><a href="#">Best cover crops for rice fields in monsoon regions?</a></h3>
+                                <p class="topic-excerpt">I'm looking for advice on suitable cover crops that can thrive between rice seasons in high rainfall areas.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-author">
+                                        <img src="assets/images/avatar-2.jpg" alt="RiceFarmer" class="avatar">
+                                        <span>RiceFarmer</span>
+                                    </span>
+                                    <span class="topic-stats">
+                                        <span><i class="fas fa-reply"></i> 12 replies</span>
+                                        <span><i class="fas fa-eye"></i> 85 views</span>
+                                    </span>
+                                    <span class="topic-date">3 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="forum-topic">
+                            <div class="topic-category">
+                                <span class="category-badge" style="background-color: #FFA600;">Funding</span>
+                            </div>
+                            <div class="topic-content">
+                                <h3><a href="#">Grant opportunity for regenerative agriculture projects in Southeast Asia</a></h3>
+                                <p class="topic-excerpt">New funding available for community-based initiatives. Application deadline approaching!</p>
+                                <div class="topic-meta">
+                                    <span class="topic-author">
+                                        <img src="assets/images/avatar-3.jpg" alt="GrantAdvisor" class="avatar">
+                                        <span>GrantAdvisor</span>
+                                    </span>
+                                    <span class="topic-stats">
+                                        <span><i class="fas fa-reply"></i> 8 replies</span>
+                                        <span><i class="fas fa-eye"></i> 112 views</span>
+                                    </span>
+                                    <span class="topic-date">1 week ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="forum-topic">
+                            <div class="topic-category">
+                                <span class="category-badge" style="background-color: #2ECC71;">General</span>
+                            </div>
+                            <div class="topic-content">
+                                <h3><a href="#">Welcome to the RegenAsia Community Hub!</a></h3>
+                                <p class="topic-excerpt">Please introduce yourself and share your interest in regenerative agriculture.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-author">
+                                        <img src="assets/images/avatar-1.jpg" alt="Admin" class="avatar">
+                                        <span>Admin</span>
+                                    </span>
+                                    <span class="topic-stats">
+                                        <span><i class="fas fa-reply"></i> 24 replies</span>
+                                        <span><i class="fas fa-eye"></i> 178 views</span>
+                                    </span>
+                                    <span class="topic-date">2 days ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="forum-topic">
+                            <div class="topic-category">
+                                <span class="category-badge" style="
