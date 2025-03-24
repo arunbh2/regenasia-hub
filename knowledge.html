@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Repository - RegenAsia Hub</title>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Explore curated resources, research articles, and best practices on regenerative agriculture across South and Southeast Asia.">
+    <meta name="keywords" content="regenerative agriculture, knowledge repository, case studies, research, best practices, South Asia, Southeast Asia">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
 </head>
 <body class="knowledge-page">
     <!-- Header Navigation -->
@@ -26,12 +31,12 @@
                     <li><a href="community.html">Community</a></li>
                     <li><a href="tools-training.html">Tools & Training</a></li>
                     <li><a href="fundraising.html">Fundraising</a></li>
-                     <li><a href="funding-opportunities.html">Funding Opportunities</a></li>
+                    <li><a href="funding-opportunities.html">Funding Opportunities</a></li>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="team.html">Our Team</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu-toggle">
+            <div class="mobile-menu-toggle" aria-label="Toggle mobile menu">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
@@ -49,13 +54,13 @@
     <section class="search-filter">
         <div class="container">
             <div class="search-box">
-                <input type="text" placeholder="Search for resources...">
-                <button type="submit"><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="Search for resources..." aria-label="Search resources">
+                <button type="submit" aria-label="Search"><i class="fas fa-search"></i></button>
             </div>
             <div class="filter-options">
                 <div class="filter-group">
                     <label for="resource-type">Resource Type:</label>
-                    <select id="resource-type">
+                    <select id="resource-type" aria-label="Filter by resource type">
                         <option value="all">All Types</option>
                         <option value="case-studies">Case Studies</option>
                         <option value="research">Research Articles</option>
@@ -64,7 +69,7 @@
                 </div>
                 <div class="filter-group">
                     <label for="region">Region:</label>
-                    <select id="region">
+                    <select id="region" aria-label="Filter by region">
                         <option value="all">All Regions</option>
                         <option value="india">India</option>
                         <option value="indonesia">Indonesia</option>
@@ -77,7 +82,7 @@
                 </div>
                 <div class="filter-group">
                     <label for="topic">Topic:</label>
-                    <select id="topic">
+                    <select id="topic" aria-label="Filter by topic">
                         <option value="all">All Topics</option>
                         <option value="soil-health">Soil Health</option>
                         <option value="agroforestry">Agroforestry</option>
@@ -100,66 +105,66 @@
             <div class="resource-cards">
                 <div class="resource-card">
                     <div class="resource-img">
-                        <img src="assets/images/case-study-1.jpg" alt="Andhra Pradesh Natural Farming">
+                        <img src="assets/images/case-study-1.jpg" alt="Farmers practicing natural farming in Andhra Pradesh">
                     </div>
                     <div class="resource-content">
                         <h3>Community Natural Farming in Andhra Pradesh, India</h3>
                         <p class="resource-meta"><span>India</span> | <span>Soil Health</span> | <span>Community Approach</span></p>
                         <p class="resource-excerpt">A groundbreaking state-wide program transitioning millions of farmers to natural, regenerative farming. By 2020-21, about 630,000 farmers had adopted these agroecological practices, reporting lower input costs, improved yields after 2-3 years, and ~10% irrigation water reduction due to better soil moisture retention. The program's success relies on grassroots extension networks, women's Self-Help Groups, and supportive state policy.</p>
-                        <a href="#" class="view-button">View Case Study</a>
+                        <a href="case-studies/andhra-pradesh.html" class="view-button">View Case Study</a>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="resource-img">
-                        <img src="assets/images/case-study-2.jpg" alt="Coffee Agroforestry in the Philippines">
+                        <img src="assets/images/case-study-2.jpg" alt="Coffee agroforestry system in the Philippines">
                     </div>
                     <div class="resource-content">
                         <h3>Farmer-Managed Agroforestry in the Philippines</h3>
                         <p class="resource-meta"><span>Philippines</span> | <span>Agroforestry</span> | <span>Export Crops</span></p>
                         <p class="resource-excerpt">In the hilly uplands of Mindanao, smallholder coffee growers partnered with Nestlé's NESCAFÉ Plan to transform degraded land through regenerative agroforestry. Farmers planted shade trees and cover crops in coffee fields, used compost instead of chemical fertilizer, and intercropped with fruit and timber species. The project gained government recognition and demonstrates how public-private-community collaborations can accelerate regenerative agriculture adoption.</p>
-                        <a href="#" class="view-button">View Case Study</a>
+                        <a href="case-studies/philippines-agroforestry.html" class="view-button">View Case Study</a>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="resource-img">
-                        <img src="assets/images/case-study-3.jpg" alt="Sri Lankan Home Gardens">
+                        <img src="assets/images/case-study-3.jpg" alt="Traditional Kandyan home garden in Sri Lanka">
                     </div>
                     <div class="resource-content">
                         <h3>Traditional Home Gardens in Sri Lanka</h3>
                         <p class="resource-meta"><span>Sri Lanka</span> | <span>Biodiversity</span> | <span>Traditional Knowledge</span></p>
                         <p class="resource-excerpt">Practiced in the Central Highlands since at least the 15th century, Kandyan home gardens feature multistoried cultivation with food crops, medicinal plants, fruits, spices, and timber trees. These human-designed forest ecosystems preserve biodiversity, maintain soil fertility through continuous leaf litter, and provide families with stable food and income. Their structure protects soil from heavy rains and shields crops from harsh weather, demonstrating remarkable climate resilience.</p>
-                        <a href="#" class="view-button">View Case Study</a>
+                        <a href="case-studies/sri-lanka-gardens.html" class="view-button">View Case Study</a>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="resource-img">
-                        <img src="assets/images/case-study-4.jpg" alt="Regenerative Rice in Thailand">
+                        <img src="assets/images/case-study-4.jpg" alt="Regenerative rice farming in Thailand">
                     </div>
                     <div class="resource-content">
                         <h3>Regenerative Rice and Rubber in Thailand</h3>
                         <p class="resource-meta"><span>Thailand</span> | <span>Rice Systems</span> | <span>Corporate Partnership</span></p>
                         <p class="resource-excerpt">Unilever's Jasmine Rice Regeneration Project in Northeastern Thailand introduced soil testing and nutrient management that reduced synthetic fertilizer use by 30-40%, along with cover crops in fallow periods. Farmers saw immediate benefits: looser, more fertile soil, fewer pests, and improved flood and drought tolerance, with stable or improved yields and reduced input costs. In Southern Thailand, rubber farmers partnered with organizations to develop agroforestry systems integrating fruit trees and cover crops.</p>
-                        <a href="#" class="view-button">View Case Study</a>
+                        <a href="case-studies/thailand-rice-rubber.html" class="view-button">View Case Study</a>
                     </div>
                 </div>
                 
                 <div class="resource-card">
                     <div class="resource-img">
-                        <img src="assets/images/case-study-6.jpg" alt="Rice-Fish Systems in Bangladesh">
+                        <img src="assets/images/case-study-6.jpg" alt="Integrated rice-fish farming in Bangladesh">
                     </div>
                     <div class="resource-content">
                         <h3>Integrated Rice-Fish Systems in Bangladesh</h3>
                         <p class="resource-meta"><span>Bangladesh</span> | <span>Integrated Farming</span> | <span>Water Management</span></p>
                         <p class="resource-excerpt">In the low-lying areas of Bangladesh, farmers have developed sophisticated rice-fish culture systems that both mitigate flood risks and maximize resource use efficiency. Fish in rice paddies eat mosquito larvae and provide protein, while their movement aerates the water and improves nutrient cycling, reducing the need for fertilizer and enhancing rice yields. This integrated approach demonstrates how farmers combine aquaculture with agriculture to build resilience against flooding while simultaneously improving food security with diverse outputs.</p>
-                        <a href="#" class="view-button">View Case Study</a>
+                        <a href="case-studies/bangladesh-rice-fish.html" class="view-button">View Case Study</a>
                     </div>
                 </div>
             </div>
             <div class="view-more">
-                <a href="#" class="secondary-button">View More Case Studies</a>
+                <a href="case-studies/index.html" class="secondary-button">View More Case Studies</a>
             </div>
         </div>
     </section>
@@ -182,7 +187,7 @@
                         <p class="resource-excerpt">Research showing that improved soil carbon management through no-till, cover crops, and agroforestry could sequester up to 23 gigatons of CO₂ by 2050 globally. In South Asia, increases in soil organic carbon of 0.1-0.3% per year have been documented on regenerative agriculture plots, significant for carbon-depleted soils in the region.</p>
                     </div>
                     <div class="resource-action">
-                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                        <a href="research/soil-carbon-sequestration-2023.pdf" class="download-button"><i class="fas fa-download"></i> Download</a>
                     </div>
                 </div>
                 
@@ -196,7 +201,7 @@
                         <p class="resource-excerpt">The Rodale Institute's long-term Farming Systems Trial found organic regenerative plots had grain yields 31% higher than conventional in drought years. A 5-year study in a semi-arid region of India observed that farms transitioning to climate-smart regenerative practices had less yield variability season-to-season than nearby conventional farms, especially under erratic rainfall patterns.</p>
                     </div>
                     <div class="resource-action">
-                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                        <a href="research/yield-stability-resilience-2022.pdf" class="download-button"><i class="fas fa-download"></i> Download</a>
                     </div>
                 </div>
                 
@@ -210,7 +215,7 @@
                         <p class="resource-excerpt">Studies from Vietnam show farmer Trinh Vinh experienced a 25% reduction in costs and 35% increase in profits within 3 years of adopting regenerative coffee practices. Analysis in Andhra Pradesh, India found natural farming saved farmers over 50% on fertilizers and pesticides with no significant yield penalty after the initial transition, resulting in equal or greater profits overall.</p>
                     </div>
                     <div class="resource-action">
-                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                        <a href="research/economic-analysis-2023.pdf" class="download-button"><i class="fas fa-download"></i> Download</a>
                     </div>
                 </div>
                 
@@ -224,7 +229,7 @@
                         <p class="resource-excerpt">A study in southern Thailand found that rubber plots intercropped with fruit trees hosted significantly higher biodiversity (butterflies and understory plants) than monoculture rubber without any loss in latex yield. Research in the Philippines showed that farms practicing agroecological methods had higher pollinator presence and needed fewer pesticide applications, correlating with slight yield increases in eggplant and tomato crops.</p>
                     </div>
                     <div class="resource-action">
-                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                        <a href="research/ecosystem-services-2021.pdf" class="download-button"><i class="fas fa-download"></i> Download</a>
                     </div>
                 </div>
                 
@@ -238,12 +243,12 @@
                         <p class="resource-excerpt">Preliminary findings suggest that diverse cropping in regenerative agriculture can improve dietary diversity for farm families. Reduced pesticide use lowers health risks – an important outcome in South Asia where pesticide poisoning has been an issue. Research following Sri Lanka's organic push noted that farmers who successfully transitioned had reduced health costs due to less chemical exposure and sometimes fetched higher prices for organic produce.</p>
                     </div>
                     <div class="resource-action">
-                        <a href="#" class="download-button"><i class="fas fa-download"></i> Download</a>
+                        <a href="research/nutritional-health-outcomes-2024.pdf" class="download-button"><i class="fas fa-download"></i> Download</a>
                     </div>
                 </div>
             </div>
             <div class="view-more">
-                <a href="#" class="secondary-button">View More Research Articles</a>
+                <a href="research/index.html" class="secondary-button">View More Research Articles</a>
             </div>
         </div>
     </section>
@@ -259,37 +264,37 @@
                 <div class="practice-card">
                     <h3>Reviving and Sustaining Healthy Soils</h3>
                     <p>Key practices include cover cropping (e.g., "Pinto peanut" between coffee rows in Vietnam), green manures, conservation tillage (especially zero-till planters for wheat in South Asia), and organic amendments. In India, natural farming uses "jeevamrut" (fermented microbial culture from cow dung, urine, and pulse flour) to restore soil biology. Diverse crop rotations with legumes are essential - Nepal's climate-resilient agriculture project enhanced maize-rice rotations by adding legumes, improving soil nitrogen and breaking pest cycles.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    <a href="practices/soil-health.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="practice-card">
                     <h3>Agroforestry and Biodiversity Restoration</h3>
                     <p>Multi-strata agroforestry, as exemplified by Sri Lanka's Kandyan home gardens, combines tall trees, understory trees, shrubs, and crops in complementary arrangements. In Vietnam's Central Highlands, coffee farmers plant fruit or timber trees (durian, avocado, acacia) for shade, leaf litter, and alternative harvests. Boundary planting with vetiver grass or legumes in Nepal stabilizes terraces, while Thailand's rice systems use flowering border strips to attract beneficial insects. Indigenous crop varieties preservation is also critical.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    <a href="practices/agroforestry-biodiversity.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="practice-card">
                     <h3>Water Management for Resilience</h3>
                     <p>Best practices include rainwater harvesting through farm ponds and percolation tanks (as in arid parts of India), efficient irrigation methods like drip systems combined with organic mulching (cutting water use by 50% in South India vegetable farms), alternate wetting and drying (AWD) in rice paddies (saving 30% water and reducing methane emissions by 50%), and integrated watershed management. In Bangladesh, rice-fish culture improves water efficiency by using one water body for two productions.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    <a href="practices/water-management.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="practice-card">
                     <h3>Integrated and Community-Centered Farming</h3>
                     <p>Exemplified by Thailand's Sufficiency Economy farms, which typically integrate paddy, fruit orchard, fish pond, and livestock on a single small farm, creating circular nutrient flows. The classic rice-fish-duck system in India combines ducks for pest control, fish for protein, and improved rice yields. Community-based approaches like Nepal's watershed committees coordinate soil conservation measures across farms. Farmer Field Schools and participatory research have been very effective for disseminating techniques.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    <a href="practices/integrated-community-farming.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="practice-card">
                     <h3>Market Linkages and Value Addition</h3>
                     <p>Connecting farmers to markets that reward sustainable produce is crucial. Certification and labeling (Organic, Fair Trade, Rainforest Alliance) can provide premium prices, as experienced by Vietnamese coffee farmer Vinh who became one of the first Rainforest Alliance Certified growers. In India, Farmer Producer Organizations formed by natural farming groups directly market pesticide-free food to health-conscious urban consumers. Value addition through on-farm processing (organic jams, herbal teas) can increase income.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    <a href="practices/market-linkages.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="practice-card">
                     <h3>Adaptive Management and Continuous Learning</h3>
                     <p>Regenerative agriculture is knowledge-intensive and requires regular monitoring and adaptation. In drought-prone regions of India, farmers keep records of rainfall, soil moisture, and crop performance, then discuss results in farmer groups to adjust practices. Successful regenerative models treat the farm as an evolving system. Partnerships between CGIAR scientists and villages (Climate-Smart Villages initiatives in Bangladesh, Nepal) demonstrate how co-creation of solutions accelerates adoption.</p>
-                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    <a href="practices/adaptive-management.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -316,6 +321,15 @@
         </div>
     </section>
 
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>Are you a regenerative agriculture expert or practitioner?</h2>
+            <p>Share your knowledge and experience with our growing community of regenerative agriculture champions.</p>
+            <a href="contribute.html" class="cta-button">Contribute Content</a>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
@@ -333,33 +347,41 @@
                         <li><a href="tools-training.html">Tools & Training</a></li>
                         <li><a href="fundraising.html">Fundraising</a></li>
                         <li><a href="about.html">About Us</a></li>
-                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="footer-social">
                     <h4>Connect With Us</h4>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-newsletter">
                     <h4>Subscribe to Our Newsletter</h4>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Your Email Address">
+                        <input type="email" placeholder="Your Email Address" aria-label="Your email address">
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 RegenAsia Hub. All Rights Reserved.</p>
+                <ul class="legal-links">
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                </ul>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Scripts -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
