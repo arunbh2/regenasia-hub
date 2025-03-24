@@ -558,6 +558,158 @@
             background-color: var(--primary-blue);
             color: white;
         }
+        
+        /* Testimonials Section Styles */
+        .testimonials-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .testimonials-carousel {
+            max-width: 800px;
+            margin: 2rem auto 0;
+            position: relative;
+        }
+        
+        .testimonial {
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+        }
+        
+        .testimonial-content {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius-md);
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50px;
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: var(--light-gray) transparent;
+        }
+        
+        .testimonial-content p {
+            font-style: italic;
+            margin: 0 0 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-left: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+        
+        .author-info h4 {
+            margin: 0 0 0.2rem;
+        }
+        
+        .author-info p {
+            margin: 0;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            gap: 0.5rem;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--medium-gray);
+            cursor: pointer;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .nav-dot.active {
+            background-color: var(--primary-blue);
+        }
+        
+        /* Join CTA Styles */
+        .join-cta {
+            padding: 4rem 0;
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .cta-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            margin: 0 0 1rem;
+            font-size: 2rem;
+        }
+        
+        .cta-content p {
+            margin: 0 0 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius-sm);
+        }
+        
+        .feature i {
+            margin-right: 0.5rem;
+            color: var(--primary-yellow);
+        }
+        
+        .join-cta .cta-button {
+            background-color: var(--primary-yellow);
+            color: white;
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            border-radius: var(--border-radius-sm);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            transition: background-color var(--transition-quick);
+        }
+        
+        .join-cta .cta-button:hover {
+            background-color: var(--primary-yellow-dark);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="community-page">
@@ -723,308 +875,58 @@
             <h1>Community Hub</h1>
             <p>Connect with practitioners, experts, and change-makers in regenerative agriculture</p>
         </div>
-    </section>
-
-    <!-- Events Section -->
-    <section class="events-section" id="events">
-        <div class="container">
-            <div class="section-header">
-                <h2>Upcoming Events & Webinars</h2>
-                <p>Join virtual and in-person learning opportunities</p>
-            </div>
-            <div class="event-cards">
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="date-day">15</span>
-                        <span class="date-month">Apr</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Webinar: Soil Health Assessment for Smallholders</h3>
-                        <p class="event-meta">
-                            <span><i class="fas fa-clock"></i> 10:00 AM - 11:30 AM (GMT+7)</span>
-                            <span><i class="fas fa-video"></i> Online</span>
-                        </p>
-                        <p class="event-excerpt">Learn practical, low-cost methods to assess and monitor soil health on small farms.</p>
-                        <a href="#" class="register-button">Register Now</a>
-                    </div>
-                </div>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/nav-script.js"></script>
+    <script>
+        // Testimonial Carousel
+        document.addEventListener('DOMContentLoaded', function() {
+            const testimonials = document.querySelectorAll('.testimonial');
+            const dots = document.querySelectorAll('.nav-dot');
+            
+            if (testimonials.length > 0 && dots.length > 0) {
+                // Set up dot navigation
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        // Hide all testimonials
+                        testimonials.forEach(testimonial => {
+                            testimonial.classList.remove('active');
+                        });
+                        
+                        // Deactivate all dots
+                        dots.forEach(dot => {
+                            dot.classList.remove('active');
+                        });
+                        
+                        // Show selected testimonial and activate dot
+                        testimonials[index].classList.add('active');
+                        dot.classList.add('active');
+                    });
+                });
                 
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="date-day">22</span>
-                        <span class="date-month">Apr</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Workshop: Agroforestry Design Principles</h3>
-                        <p class="event-meta">
-                            <span><i class="fas fa-clock"></i> 9:00 AM - 4:00 PM (GMT+5:30)</span>
-                            <span><i class="fas fa-map-marker-alt"></i> Kerala Agricultural University, India</span>
-                        </p>
-                        <p class="event-excerpt">Hands-on workshop on designing multi-story agroforestry systems for different contexts.</p>
-                        <a href="#" class="register-button">Register Now</a>
-                    </div>
-                </div>
-                
-                <div class="event-card">
-                    <div class="event-date">
-                        <span class="date-day">5</span>
-                        <span class="date-month">May</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>Panel Discussion: Funding Regenerative Agriculture Projects</h3>
-                        <p class="event-meta">
-                            <span><i class="fas fa-clock"></i> 3:00 PM - 4:30 PM (GMT+8)</span>
-                            <span><i class="fas fa-video"></i> Online</span>
-                        </p>
-                        <p class="event-excerpt">Expert panel on navigating funding opportunities for regenerative agriculture initiatives.</p>
-                        <a href="#" class="register-button">Register Now</a>
-                    </div>
-                </div>
-            </div>
-            <div class="view-more">
-                <a href="#" class="secondary-button">View All Events</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Community Testimonials -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Community Voices</h2>
-                <p>Hear from members who are part of our regenerative agriculture community</p>
-            </div>
-            <div class="testimonials-carousel">
-                <div class="testimonial active">
-                    <div class="testimonial-content">
-                        <p>"Being part of the RegenAsia community has transformed my farming practice. Through the forums, I connected with experts who helped me implement agroforestry practices that have improved my soil health dramatically. The knowledge exchange is invaluable."</p>
-                        <div class="testimonial-author">
-                            <img src="assets/images/testimonial-1.jpg" alt="Farmer Testimonial" class="testimonial-avatar">
-                            <div class="author-info">
-                                <h4>Sanjay Patel</h4>
-                                <p>Smallholder Farmer, Gujarat, India</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"As an NGO working in rural Thailand, we've been able to connect with funding partners through RegenAsia Hub that aligned perfectly with our mission. The platform's network has helped us scale our watershed management project to 12 villages in just one year."</p>
-                        <div class="testimonial-author">
-                            <img src="assets/images/testimonial-2.jpg" alt="NGO Testimonial" class="testimonial-avatar">
-                            <div class="author-info">
-                                <h4>Sunisa Thongprasert</h4>
-                                <p>Program Director, Sustainable Watersheds Foundation</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"The expert network and research collaborations I've found through RegenAsia have accelerated my work on soil carbon measurement techniques. What would have taken years to develop alone has been achieved in months thanks to this community."</p>
-                        <div class="testimonial-author">
-                            <img src="assets/images/testimonial-3.jpg" alt="Researcher Testimonial" class="testimonial-avatar">
-                            <div class="author-info">
-                                <h4>Dr. Arjun Nair</h4>
-                                <p>Soil Scientist, University of Kerala</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-nav">
-                <span class="nav-dot active" data-slide="0"></span>
-                <span class="nav-dot" data-slide="1"></span>
-                <span class="nav-dot" data-slide="2"></span>
-            </div>
-        </div>
-    </section>
-    
-    <style>
-        /* Testimonials Section Styles */
-        .testimonials-section {
-            padding: 4rem 0;
-            background-color: white;
-        }
-        
-        .testimonials-carousel {
-            max-width: 800px;
-            margin: 2rem auto 0;
-            position: relative;
-        }
-        
-        .testimonial {
-            display: none;
-        }
-        
-        .testimonial.active {
-            display: block;
-        }
-        
-        .testimonial-content {
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius-md);
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .testimonial-content::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50px;
-            border-width: 10px 10px 0;
-            border-style: solid;
-            border-color: var(--light-gray) transparent;
-        }
-        
-        .testimonial-content p {
-            font-style: italic;
-            margin: 0 0 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            margin-top: 1.5rem;
-            padding-left: 1rem;
-        }
-        
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 1rem;
-        }
-        
-        .author-info h4 {
-            margin: 0 0 0.2rem;
-        }
-        
-        .author-info p {
-            margin: 0;
-            color: #555;
-            font-size: 0.9rem;
-        }
-        
-        .carousel-nav {
-            display: flex;
-            justify-content: center;
-            margin-top: 1.5rem;
-            gap: 0.5rem;
-        }
-        
-        .nav-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--medium-gray);
-            cursor: pointer;
-            transition: background-color var(--transition-quick);
-        }
-        
-        .nav-dot.active {
-            background-color: var(--primary-blue);
-        }
-        
-        /* Join CTA Styles */
-        .join-cta {
-            padding: 4rem 0;
-            background-color: var(--primary-blue);
-            color: white;
-        }
-        
-        .cta-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .cta-content h2 {
-            margin: 0 0 1rem;
-            font-size: 2rem;
-        }
-        
-        .cta-content p {
-            margin: 0 0 2rem;
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        
-        .cta-features {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .feature {
-            display: flex;
-            align-items: center;
-            font-size: 1rem;
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 0.8rem 1.2rem;
-            border-radius: var(--border-radius-sm);
-        }
-        
-        .feature i {
-            margin-right: 0.5rem;
-            color: var(--primary-yellow);
-        }
-        
-        .join-cta .cta-button {
-            background-color: var(--primary-yellow);
-            color: white;
-            padding: 0.8rem 2rem;
-            font-size: 1.1rem;
-            border-radius: var(--border-radius-sm);
-            text-decoration: none;
-            font-weight: 500;
-            display: inline-block;
-            transition: background-color var(--transition-quick);
-        }
-        
-        .join-cta .cta-button:hover {
-            background-color: var(--primary-yellow-dark);
-            transform: translateY(-2px);
-        }
-    </style>
-
-    <!-- Join CTA -->
-    <section class="join-cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Connect with the Regenerative Agriculture Community?</h2>
-                <p>Join our growing network of farmers, researchers, NGOs, and experts across South and Southeast Asia.</p>
-                <div class="cta-features">
-                    <div class="feature">
-                        <i class="fas fa-comments"></i>
-                        <span>Participate in forums</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-handshake"></i>
-                        <span>Connect with experts</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-calendar-check"></i>
-                        <span>Attend events</span>
-                    </div>
-                    <div class="feature">
-                        <i class="fas fa-share-alt"></i>
-                        <span>Share your knowledge</span>
-                    </div>
-                </div>
-                <a href="#" class="cta-button">Join the Community</a>
-            </div>
-        </div>
-    </section>
-
+                // Auto-rotate testimonials
+                let currentIndex = 0;
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % testimonials.length;
+                    
+                    // Hide all testimonials
+                    testimonials.forEach(testimonial => {
+                        testimonial.classList.remove('active');
+                    });
+                    
+                    // Deactivate all dots
+                    dots.forEach(dot => {
+                        dot.classList.remove('active');
+                    });
+                    
+                    // Show next testimonial and activate dot
+                    testimonials[currentIndex].classList.add('active');
+                    dots[currentIndex].classList.add('active');
+                }, 6000); // Rotate every 6 seconds
+            }
+        });
+    </script>
+</body>
+</html>
 
     <!-- Community Intro and CTA -->
     <section class="community-intro" id="join">
@@ -1040,236 +942,3 @@
     <!-- Forums Section (Discourse-like) -->
     <section class="forums-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Discussion Forums</h2>
-                <p>Engage in conversations, ask questions, and share your experiences</p>
-                <div class="forum-actions">
-                    <a href="#" class="new-topic-button"><i class="fas fa-plus"></i> New Topic</a>
-                    <div class="forum-search">
-                        <input type="text" placeholder="Search forums..." aria-label="Search forums">
-                        <button aria-label="Search"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Discourse-like Forum Layout -->
-            <div class="forum-container">
-                <!-- Forum Navigation -->
-                <div class="forum-nav">
-                    <ul class="forum-nav-list">
-                        <li class="active"><a href="#"><i class="fas fa-fire"></i> Latest</a></li>
-                        <li><a href="#"><i class="fas fa-chart-line"></i> Top</a></li>
-                        <li><a href="#"><i class="fas fa-bookmark"></i> Bookmarked</a></li>
-                        <li><a href="#"><i class="fas fa-user"></i> My Posts</a></li>
-                    </ul>
-                    
-                    <div class="forum-categories">
-                        <h3>Categories</h3>
-                        <ul>
-                            <li><a href="#"><span class="category-color" style="background-color: #2ECC71;"></span> General Discussion</a></li>
-                            <li><a href="#"><span class="category-color" style="background-color: #1B9CFC;"></span> Technical Questions</a></li>
-                            <li><a href="#"><span class="category-color" style="background-color: #FFA600;"></span> Funding & Partnerships</a></li>
-                            <li><a href="#"><span class="category-color" style="background-color: #ED6A82;"></span> Events & Announcements</a></li>
-                            <li><a href="#"><span class="category-color" style="background-color: #8E44AD;"></span> Research & Innovation</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="forum-tags">
-                        <h3>Popular Tags</h3>
-                        <div class="tag-cloud">
-                            <a href="#" class="tag">soil-health</a>
-                            <a href="#" class="tag">agroforestry</a>
-                            <a href="#" class="tag">water-management</a>
-                            <a href="#" class="tag">composting</a>
-                            <a href="#" class="tag">indigenous-knowledge</a>
-                            <a href="#" class="tag">cover-crops</a>
-                            <a href="#" class="tag">certification</a>
-                            <a href="#" class="tag">marketing</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Forum Content -->
-                <div class="forum-content">
-                    <div class="forum-topics">
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #8E44AD;">Research</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">New research on soil carbon sequestration rates in tropical agroforestry systems</a></h3>
-                                <p class="topic-excerpt">Our team has completed a 5-year study on carbon benefits of different agroforestry designs. Here are the key findings.</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-5.jpg" alt="Researcher" class="avatar">
-                                        <span>Researcher</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 18 replies</span>
-                                        <span><i class="fas fa-eye"></i> 143 views</span>
-                                    </span>
-                                    <span class="topic-date">5 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="forum-pagination">
-                        <span class="page-current">1</span>
-                        <a href="#" class="page-link">2</a>
-                        <a href="#" class="page-link">3</a>
-                        <a href="#" class="page-link">4</a>
-                        <span class="page-dots">...</span>
-                        <a href="#" class="page-link">12</a>
-                        <a href="#" class="page-next"><i class="fas fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expert Network Section -->
-    <section class="expert-network" id="experts">
-        <div class="container">
-            <div class="section-header">
-                <h2>Expert Network</h2>
-                <p>Connect with specialists and practitioners in regenerative agriculture</p>
-            </div>
-            <div class="expert-cards">
-                <div class="expert-card">
-                    <div class="expert-image">
-                        <img src="assets/images/expert-1.jpg" alt="Dr. Vijay Kumar">
-                    </div>
-                    <h3>Dr. Vijay Kumar</h3>
-                    <p class="expert-title">Natural Farming Specialist</p>
-                    <p class="expert-location"><i class="fas fa-map-marker-alt"></i> Andhra Pradesh, India</p>
-                    <p class="expert-bio">Lead architect of Andhra Pradesh's Community Natural Farming program supporting over a million farmers.</p>
-                    <div class="expert-specialties">
-                        <span class="specialty">Policy</span>
-                        <span class="specialty">Community Mobilization</span>
-                        <span class="specialty">Natural Farming</span>
-                    </div>
-                    <a href="#" class="expert-connect">Connect</a>
-                </div>
-                
-                <div class="expert-card">
-                    <div class="expert-image">
-                        <img src="assets/images/expert-2.jpg" alt="Nguyen Thi Thiet">
-                    </div>
-                    <h3>Nguyen Thi Thiet</h3>
-                    <p class="expert-title">Sustainable Agriculture Advisor</p>
-                    <p class="expert-location"><i class="fas fa-map-marker-alt"></i> Hanoi, Vietnam</p>
-                    <p class="expert-bio">20+ years experience working with Vietnamese farmers on sustainable certification and regenerative agriculture in coffee and tea sectors.</p>
-                    <div class="expert-specialties">
-                        <span class="specialty">Value Chains</span>
-                        <span class="specialty">Farmer Training</span>
-                        <span class="specialty">Certification</span>
-                    </div>
-                    <a href="#" class="expert-connect">Connect</a>
-                </div>
-                
-                <div class="expert-card">
-                    <div class="expert-image">
-                        <img src="assets/images/expert-3.jpg" alt="Dr. Ranil Senanayake">
-                    </div>
-                    <h3>Dr. Ranil Senanayake</h3>
-                    <p class="expert-title">Systems Ecologist</p>
-                    <p class="expert-location"><i class="fas fa-map-marker-alt"></i> Colombo, Sri Lanka</p>
-                    <p class="expert-bio">Founder of the Analog Forestry concept and a leading voice in Sri Lanka's agroforestry movement.</p>
-                    <div class="expert-specialties">
-                        <span class="specialty">Agroforestry</span>
-                        <span class="specialty">Ecosystem Restoration</span>
-                        <span class="specialty">Biodiversity</span>
-                    </div>
-                    <a href="#" class="expert-connect">Connect</a>
-                </div>
-            </div>
-            <div class="view-more">
-                <a href="#" class="secondary-button">View More Experts</a>
-            </div>
-        </div>
-    </section>background-color: #ED6A82;">Events</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Upcoming Webinar: Soil Health Assessment Techniques for Smallholders</a></h3>
-                                <p class="topic-excerpt">Join us for a hands-on virtual workshop on simple soil testing methods for small-scale farmers.</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-4.jpg" alt="SoilExpert" class="avatar">
-                                        <span>SoilExpert</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 5 replies</span>
-                                        <span><i class="fas fa-eye"></i> 67 views</span>
-                                    </span>
-                                    <span class="topic-date">2 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #1B9CFC;">Technical</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Best cover crops for rice fields in monsoon regions?</a></h3>
-                                <p class="topic-excerpt">I'm looking for advice on suitable cover crops that can thrive between rice seasons in high rainfall areas.</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-2.jpg" alt="RiceFarmer" class="avatar">
-                                        <span>RiceFarmer</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 12 replies</span>
-                                        <span><i class="fas fa-eye"></i> 85 views</span>
-                                    </span>
-                                    <span class="topic-date">3 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #FFA600;">Funding</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Grant opportunity for regenerative agriculture projects in Southeast Asia</a></h3>
-                                <p class="topic-excerpt">New funding available for community-based initiatives. Application deadline approaching!</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-3.jpg" alt="GrantAdvisor" class="avatar">
-                                        <span>GrantAdvisor</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 8 replies</span>
-                                        <span><i class="fas fa-eye"></i> 112 views</span>
-                                    </span>
-                                    <span class="topic-date">1 week ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="background-color: #2ECC71;">General</span>
-                            </div>
-                            <div class="topic-content">
-                                <h3><a href="#">Welcome to the RegenAsia Community Hub!</a></h3>
-                                <p class="topic-excerpt">Please introduce yourself and share your interest in regenerative agriculture.</p>
-                                <div class="topic-meta">
-                                    <span class="topic-author">
-                                        <img src="assets/images/avatar-1.jpg" alt="Admin" class="avatar">
-                                        <span>Admin</span>
-                                    </span>
-                                    <span class="topic-stats">
-                                        <span><i class="fas fa-reply"></i> 24 replies</span>
-                                        <span><i class="fas fa-eye"></i> 178 views</span>
-                                    </span>
-                                    <span class="topic-date">2 days ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="forum-topic">
-                            <div class="topic-category">
-                                <span class="category-badge" style="
